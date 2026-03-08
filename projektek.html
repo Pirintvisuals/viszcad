@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Referenciák – ViszCAD Mérnökiroda Projektjei</title>
+  <meta name="description" content="ViszCAD referenciaprojektek: vízközmű, csatornázás, útépítés, geodézia és köztér-fejlesztés Kazincbarcikán és Észak-Magyarországon.">
+  <meta property="og:title" content="Projektek – ViszCAD">
+  <meta property="og:description" content="Referenciaprojektjeink: 150+ befejezett munka Borsod és Heves megye területén.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Filter bar */
+    .filter-bar { display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:2.5rem; }
+    .filter-btn {
+      height:40px; padding:0 1.25rem;
+      background:transparent; border:1.5px solid var(--gray-mid);
+      border-radius:var(--r-pill); font-family:'Space Grotesk',sans-serif;
+      font-size:0.85rem; font-weight:600; color:var(--text-light);
+      cursor:pointer; transition:all var(--t-med);
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background:var(--navy); border-color:var(--navy); color:var(--white);
+    }
+    /* Projects all grid */
+    .proj-all-grid {
+      display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem;
+    }
+    .proj-all-card {
+      border-radius:var(--r-md); overflow:hidden;
+      box-shadow:0 2px 12px rgba(0,0,0,0.07);
+      transition:transform var(--t-med), box-shadow var(--t-med);
+      background:var(--white);
+    }
+    .proj-all-card:hover { transform:translateY(-4px); box-shadow:0 16px 48px rgba(0,0,0,0.13); }
+    .proj-all-img-wrap { position:relative; height:240px; overflow:hidden; }
+    .proj-all-img-wrap img { width:100%; height:100%; object-fit:cover; transition:transform 0.55s ease; }
+    .proj-all-card:hover .proj-all-img-wrap img { transform:scale(1.05); }
+    .proj-all-img-wrap .proj-cat-badge {
+      position:absolute; top:1rem; left:1rem;
+      background:var(--navy); color:var(--white);
+      font-family:'IBM Plex Sans',sans-serif; font-size:0.7rem; font-weight:600;
+      letter-spacing:0.1em; text-transform:uppercase;
+      padding:0.3rem 0.75rem; border-radius:var(--r-pill);
+    }
+    .proj-all-body { padding:1.5rem; }
+    .proj-all-body h3 { font-size:1.1rem; color:var(--navy); margin-bottom:0.4rem; }
+    .proj-all-body .proj-meta { font-size:0.82rem; color:var(--text-light); display:flex; gap:1rem; margin-bottom:0.75rem; }
+    .proj-all-body p  { font-size:0.88rem; color:var(--text-light); line-height:1.65; }
+    @media (max-width:1024px) { .proj-all-grid { grid-template-columns:repeat(2,1fr); } }
+    @media (max-width:600px)  { .proj-all-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+
+<nav class="nav" id="mainNav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="ViszCAD Mérnökiroda"></a>
+    <div class="nav-links">
+      <a href="index.html">Főoldal</a>
+      <a href="szolgaltatasok.html">Szolgáltatások</a>
+      <a href="projektek.html" class="active">Projektek</a>
+      <a href="rolunk.html">Rólunk</a>
+      <a href="kapcsolat.html" class="nav-cta">Kapcsolat</a>
+    </div>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menü">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav-mobile" id="mobileMenu">
+  <a href="index.html" onclick="closeMobile()">Főoldal</a>
+  <a href="szolgaltatasok.html" onclick="closeMobile()">Szolgáltatások</a>
+  <a href="projektek.html" onclick="closeMobile()">Projektek</a>
+  <a href="rolunk.html" onclick="closeMobile()">Rólunk</a>
+  <a href="kapcsolat.html" onclick="closeMobile()">Kapcsolat</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80')"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="container page-hero-content">
+    <nav class="page-hero-breadcrumb" aria-label="Útvonal">
+      <a href="index.html">Főoldal</a>
+      <span>/</span>
+      <span>Projektek</span>
+    </nav>
+    <h1>Referenciaprojektjeink</h1>
+  </div>
+</div>
+
+<!-- PROJECTS SECTION -->
+<section class="section-pad" style="background:var(--gray-bg)">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">150+ elvégzett munka</span>
+      <span class="line-accent"></span>
+      <h2>Kiemelt projektjeink</h2>
+      <p>Válogatás az elmúlt évek legjelentősebb munkáiból Borsod-Abaúj-Zemplén és Heves megye egészéről.</p>
+    </div>
+
+    <div class="filter-bar reveal">
+      <button class="filter-btn active" data-filter="all">Összes</button>
+      <button class="filter-btn" data-filter="vizkozmű">Vízközmű</button>
+      <button class="filter-btn" data-filter="csatorna">Csatorna</button>
+      <button class="filter-btn" data-filter="ut">Útépítés</button>
+      <button class="filter-btn" data-filter="geodézia">Geodézia</button>
+      <button class="filter-btn" data-filter="köztér">Köztér</button>
+    </div>
+
+    <div class="proj-all-grid" id="projGrid">
+
+      <div class="proj-all-card reveal" data-cat="rekonstrukcio ivoviz">
+        <div class="proj-all-img-wrap">
+          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80" alt="Szendrő rekonstrukció" loading="lazy">
+          <span class="proj-cat-badge">Rekonstrukció</span>
+        </div>
+        <div class="proj-all-body">
+          <h3>Szendrő – Ivóvíz rekonstrukció</h3>
+          <div class="proj-meta"><span>Szendrő</span><span>DN 50–200 / 2.337 fm</span></div>
+          <p>DN 50–DN200 méretű ivóvízvezetékek rekonstrukciója. Vízjogi engedélyezési és kiviteli tervek.</p>
+        </div>
+      </div>
+
+      <div class="proj-all-card reveal" data-cat="rekonstrukcio ivoviz">
+        <div class="proj-all-img-wrap">
+          <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80" alt="Parádfürdő fővezeték" loading="lazy">
+          <span class="proj-cat-badge">Ivóvízellátás</span>
+        </div>
+        <div class="proj-all-body">
+          <h3>Parádfürdő–Recsk fővezeték</h3>
+          <div class="proj-meta"><span>Parádfürdő</span><span>DN 200 / 1.880 fm</span></div>
+          <p>DN 200-as ivóvíz fővezeték rekonstrukciója. ÉRV ZRt. MSZÜ megrendelésre kiviteli terv.</p>
+        </div>
+      </div>
+
+      <div class="proj-all-card reveal" data-cat="ivoviz komplex">
+        <div class="proj-all-img-wrap">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80" alt="Bükkábrány vízellátás" loading="lazy">
+          <span class="proj-cat-badge">Ivóvízellátás</span>
+        </div>
+        <div class="proj-all-body">
+          <h3>Bükkábrány – Vízellátás fejlesztés</h3>
+          <div class="proj-meta"><span>Bükkábrány</span><span>Engedélyezési + kiviteli terv</span></div>
+          <p>685/3–685/29 hrsz. ingatlanok vízellátásának megtervezése engedélyezési és kiviteli tervszinten.</p>
+        </div>
+      </div>
+
+      <div class="proj-all-card reveal" data-cat="rekonstrukcio ivoviz">
+        <div class="proj-all-img-wrap">
+          <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80" alt="Kazincbarcika körút" loading="lazy">
+          <span class="proj-cat-badge">Rekonstrukció</span>
+        </div>
+        <div class="proj-all-body">
+          <h3>Kazincbarcika – Alsóvárosi körút</h3>
+          <div class="proj-meta"><span>Kazincbarcika</span><span>DN125 AC / 640 fm</span></div>
+          <p>DN125 méretű AC ivóvízvezeték rekonstrukciója az Alsóvárosi körúton.</p>
+        </div>
+      </div>
+
+      <div class="proj-all-card reveal" data-cat="rekonstrukcio ivoviz">
+        <div class="proj-all-img-wrap">
+          <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80" alt="Edelény Császtai" loading="lazy">
+          <span class="proj-cat-badge">Rekonstrukció</span>
+        </div>
+        <div class="proj-all-body">
+          <h3>Edelény – Császtai úti rekonstrukció</h3>
+          <div class="proj-meta"><span>Edelény</span><span>DN100 AC / I. ütem</span></div>
+          <p>DN100 AC ivóvízvezeték rekonstrukciója, I. ütemi kiviteli terv elkészítése.</p>
+        </div>
+      </div>
+
+      <div class="proj-all-card reveal" data-cat="komplex ivoviz">
+        <div class="proj-all-img-wrap">
+          <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80" alt="Újharangod komplex" loading="lazy">
+          <span class="proj-cat-badge">Komplex</span>
+        </div>
+        <div class="proj-all-body">
+          <h3>Újharangod – Komplex vízellátás</h3>
+          <div class="proj-meta"><span>Újharangod</span><span>Regionális projekt</span></div>
+          <p>Ivóvízvezeték-hálózat, víztorony és kezelőépület komplex felújítása.</p>
+        </div>
+      </div>
+
+      <div class="proj-all-card reveal" data-cat="rekonstrukcio ivoviz">
+        <div class="proj-all-img-wrap">
+          <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800&q=80" alt="Mezőkövesd kiváltás" loading="lazy">
+          <span class="proj-cat-badge">Ivóvízellátás</span>
+        </div>
+        <div class="proj-all-body">
+          <h3>Mezőkövesd – Ivóvíz kiváltás</h3>
+          <div class="proj-meta"><span>Mezőkövesd</span><span>1.106 fm összesen</span></div>
+          <p>Dohány, Rákóczi és Damjanich utcák ivóvízvezetékeinek kiváltása (551+170+150+235 fm).</p>
+        </div>
+      </div>
+
+      <div class="proj-all-card reveal" data-cat="komplex">
+        <div class="proj-all-img-wrap">
+          <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&q=80" alt="MVM ÉMÁSZ Eger" loading="lazy">
+          <span class="proj-cat-badge">Komplex</span>
+        </div>
+        <div class="proj-all-body">
+          <h3>MVM ÉMÁSZ – Eger-kelet alállomás</h3>
+          <div class="proj-meta"><span>Eger</span><span>132/22 kV-os projekt</span></div>
+          <p>132/22 kV-os alállomás ivóvízellátó vezetékének tervezése, engedélyezési és kiviteli tervek.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="cta-band-bg"></div>
+  <div class="cta-band-overlay"></div>
+  <div class="container">
+    <div class="cta-band-content reveal">
+      <span class="label" style="display:block;margin-bottom:1rem;color:var(--blue-light)">Dolgozzunk együtt</span>
+      <h2>Megismert minket?<br>Dolgozzunk együtt!</h2>
+      <p>Vegye fel velünk a kapcsolatot és derítse ki, hogyan segíthetünk a következő projektjén.</p>
+      <div class="cta-band-actions">
+        <a href="kapcsolat.html" class="btn btn-cta-orange">
+          Kapcsolatfelvétel
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="projektek.html" class="btn btn-outline">Referenciáink</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="images/logo.png" alt="ViszCAD Mérnökiroda">
+        </div>
+        <p>Professzionális vízgazdálkodási tervezés, műszaki ellenőrzés és felelős műszaki vezetés Kazincbarcikán és Észak-Magyarországon. Kamarai tag mérnökök, 20+ év tapasztalat.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Oldalak</h4>
+        <ul>
+          <li><a href="index.html">Főoldal</a></li>
+          <li><a href="szolgaltatasok.html">Szolgáltatások</a></li>
+          <li><a href="projektek.html">Projektek</a></li>
+          <li><a href="rolunk.html">Rólunk</a></li>
+          <li><a href="kapcsolat.html">Kapcsolat</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Szakterületek</h4>
+        <ul>
+          <li><a href="szolgaltatasok.html">Vízközmű-tervezés</a></li>
+          <li><a href="szolgaltatasok.html">Csatornatervezés</a></li>
+          <li><a href="szolgaltatasok.html">Műszaki ellenőrzés</a></li>
+          <li><a href="szolgaltatasok.html">Engedélyezés</a></li>
+          <li><a href="szolgaltatasok.html">Kivitelezés</a></li>
+          <li><a href="szolgaltatasok.html">Szakértői tevékenység</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Kapcsolat</h4>
+        <div class="footer-contact-item">
+          <span class="footer-contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <span>3700 Kazincbarcika,<br>Táncsics Mihály utca 28/A.</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="footer-contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.68 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <span><a href="tel:+36202246260">+36-20 / 224-62-60</a><br><a href="tel:+36304057060">+36-30 / 405-70-60</a></span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="footer-contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+          <a href="mailto:info@viszcadkft.hu">info@viszcadkft.hu</a>
+        </div>
+        <div class="footer-contact-item">
+          <span class="footer-contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+          <span>H–P: 8:00 – 16:30</span>
+        </div>
+      </div>
+
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 ViszCAD Mérnökiroda Kft. Minden jog fenntartva.</span>
+      <span>Mérnöki tervezés <a href="kapcsolat.html">Kazincbarcikán</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
