@@ -9,36 +9,56 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css?v=2">
-  <style>
-    .lak-why-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:2rem; }
-    @media (max-width:768px) { .lak-why-grid { grid-template-columns:1fr; } }
-    .lak-why-card { background:var(--white); border-radius:var(--r-md); padding:2rem; box-shadow:0 2px 12px rgba(0,0,0,0.06); text-align:center; }
-    .lak-why-icon { width:56px; height:56px; background:rgba(8,145,178,0.1); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 1rem; }
-    .lak-why-icon svg { width:26px; height:26px; stroke:#0891B2; fill:none; }
-    .lak-why-card h3 { font-size:1rem; color:var(--navy); margin-bottom:0.5rem; }
-    .lak-why-card p { font-size:0.88rem; color:var(--text-light); line-height:1.6; }
+    <style>
+    /* WHY section - left aligned */
+    .lak-why-wrap { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
+    @media (max-width:900px) { .lak-why-wrap { grid-template-columns:1fr; gap:2rem; } }
+    .lak-why-left h2 { font-size:2.2rem; color:var(--navy); margin-bottom:1.25rem; }
+    .lak-why-left p { color:var(--text-light); line-height:1.8; margin-bottom:1rem; font-size:0.97rem; }
+    .lak-precision-box { background:rgba(139,191,64,0.08); border-left:4px solid #8BBF40; border-radius:0 var(--r-sm) var(--r-sm) 0; padding:1.25rem 1.5rem; margin-top:1.5rem; }
+    .lak-precision-box strong { display:block; font-family:'Space Grotesk',sans-serif; font-size:0.88rem; color:#5a8a20; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.4rem; }
+    .lak-precision-box p { color:var(--text); font-size:0.92rem; margin:0; }
+    .lak-why-right { display:flex; flex-direction:column; gap:1.25rem; }
+    .lak-why-card { background:var(--white); border-radius:var(--r-md); padding:1.5rem; box-shadow:0 2px 12px rgba(0,0,0,0.06); display:flex; align-items:flex-start; gap:1rem; }
+    .lak-why-icon { width:48px; height:48px; background:rgba(139,191,64,0.1); border-radius:var(--r-sm); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .lak-why-icon svg { width:22px; height:22px; stroke:#8BBF40; fill:none; }
+    .lak-why-card h3 { font-size:0.97rem; color:var(--navy); margin-bottom:0.3rem; }
+    .lak-why-card p { font-size:0.85rem; color:var(--text-light); line-height:1.6; margin:0; }
+
+    /* SERVICE cards - identical structure, different accent */
     .lak-service-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:2rem; margin-top:2rem; }
     @media (max-width:768px) { .lak-service-grid { grid-template-columns:1fr; } }
-    .lak-service-card { background:var(--white); border-radius:var(--r-md); padding:2.5rem; box-shadow:0 4px 20px rgba(0,0,0,0.08); border-top:4px solid #8BBF40; }
-    .lak-service-card.featured { border-top-color:#0891B2; }
+    .lak-service-card { background:var(--white); border-radius:var(--r-md); padding:2.5rem; box-shadow:0 4px 20px rgba(0,0,0,0.08); border-top:4px solid #8BBF40; display:flex; flex-direction:column; }
+    .lak-service-card.alt { border-top-color:#0891B2; }
     .lak-service-icon { width:52px; height:52px; background:rgba(139,191,64,0.1); border-radius:var(--r-sm); display:flex; align-items:center; justify-content:center; margin-bottom:1.25rem; }
-    .lak-service-card.featured .lak-service-icon { background:rgba(8,145,178,0.1); }
+    .lak-service-card.alt .lak-service-icon { background:rgba(8,145,178,0.1); }
     .lak-service-icon svg { width:26px; height:26px; stroke:#8BBF40; fill:none; }
-    .lak-service-card.featured .lak-service-icon svg { stroke:#0891B2; }
-    .lak-service-card h3 { font-size:1.25rem; color:var(--navy); margin-bottom:0.75rem; }
+    .lak-service-card.alt .lak-service-icon svg { stroke:#0891B2; }
+    .lak-service-card h3 { font-size:1.2rem; color:var(--navy); margin-bottom:0.75rem; }
     .lak-service-card p { color:var(--text-light); font-size:0.92rem; line-height:1.7; margin-bottom:1.25rem; }
-    .lak-service-card ul { list-style:none; margin-bottom:1.5rem; }
-    .lak-service-card ul li { font-size:0.88rem; color:var(--text-light); padding:0.35rem 0; border-bottom:1px solid #f3f4f6; display:flex; align-items:center; gap:0.5rem; }
-    .lak-service-card ul li::before { content:'checkmark'; color:#8BBF40; font-weight:700; }
-    .lak-service-card.featured ul li::before { color:#0891B2; }
-    .lak-timeline-label { font-family:'Space Grotesk',sans-serif; font-size:0.78rem; font-weight:700; color:#0891B2; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem; }
-    .process-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
-    @media (max-width:900px) { .process-grid { grid-template-columns:repeat(2,1fr); } }
-    @media (max-width:500px) { .process-grid { grid-template-columns:1fr; } }
-    .proc-card { background:var(--white); border-radius:var(--r-sm); padding:1.5rem; box-shadow:0 2px 8px rgba(0,0,0,0.05); }
-    .proc-num { font-family:'Space Grotesk',sans-serif; font-size:2rem; font-weight:700; color:rgba(139,191,64,0.3); line-height:1; margin-bottom:0.5rem; }
-    .proc-card h4 { font-size:0.95rem; color:var(--navy); margin-bottom:0.35rem; }
-    .proc-card p { font-size:0.82rem; color:var(--text-light); line-height:1.6; }
+    .lak-service-card ul { list-style:none; margin-bottom:1.5rem; flex:1; }
+    .lak-service-card ul li { font-size:0.88rem; color:var(--text-light); padding:0.4rem 0; border-bottom:1px solid #f3f4f6; display:flex; align-items:center; gap:0.6rem; }
+    .lak-service-card ul li::before { content:''; display:inline-block; width:8px; height:8px; background:#8BBF40; border-radius:50%; flex-shrink:0; }
+    .lak-service-card.alt ul li::before { background:#0891B2; }
+    .lak-timeline-label { font-family:'Space Grotesk',sans-serif; font-size:0.78rem; font-weight:700; color:#8BBF40; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem; }
+    .lak-service-card.alt .lak-timeline-label { color:#0891B2; }
+    .btn-svc-green { display:inline-flex; align-items:center; gap:0.5rem; padding:0.75rem 1.5rem; background:#8BBF40; color:#fff; border-radius:var(--r-sm); font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:0.9rem; text-decoration:none; transition:background 0.2s; }
+    .btn-svc-green:hover { background:#6B9E30; }
+    .btn-svc-teal { display:inline-flex; align-items:center; gap:0.5rem; padding:0.75rem 1.5rem; background:#0891B2; color:#fff; border-radius:var(--r-sm); font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:0.9rem; text-decoration:none; transition:background 0.2s; }
+    .btn-svc-teal:hover { background:#0E7490; }
+
+    /* VERTICAL TIMELINE */
+    .proc-timeline { max-width:640px; margin:2.5rem auto 0; display:flex; flex-direction:column; gap:0; }
+    .proc-step { display:grid; grid-template-columns:56px 1fr; gap:0; position:relative; }
+    .proc-step-left { display:flex; flex-direction:column; align-items:center; }
+    .proc-step-num { width:40px; height:40px; border-radius:50%; background:rgba(139,191,64,0.15); display:flex; align-items:center; justify-content:center; font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:0.82rem; color:#8BBF40; flex-shrink:0; margin-top:0.15rem; }
+    .proc-step-line { width:2px; background:rgba(139,191,64,0.2); flex:1; min-height:24px; }
+    .proc-step:last-child .proc-step-line { display:none; }
+    .proc-step-right { padding:0 0 2.5rem 1.25rem; }
+    .proc-step-right h4 { font-size:1rem; color:var(--navy); margin-bottom:0.3rem; font-family:'Space Grotesk',sans-serif; font-weight:600; }
+    .proc-step-right p { font-size:0.88rem; color:var(--text-light); line-height:1.6; margin:0; }
+
+    /* Guarantees */
     .guarantee-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem; }
     @media (max-width:768px) { .guarantee-grid { grid-template-columns:1fr; } }
     .guarantee-card { display:flex; gap:1.25rem; align-items:flex-start; padding:1.5rem; background:var(--white); border-radius:var(--r-sm); box-shadow:0 2px 8px rgba(0,0,0,0.05); }
@@ -47,14 +67,8 @@
     .guarantee-card h4 { font-size:0.95rem; color:var(--navy); margin-bottom:0.35rem; }
     .guarantee-card p { font-size:0.85rem; color:var(--text-light); line-height:1.6; }
     .lak-faq-list { max-width:760px; margin:2rem auto 0; display:flex; flex-direction:column; gap:1rem; }
-    .lak-cta { background:#0F172A; padding:5rem 0; text-align:center; }
-    .lak-cta h2 { color:#fff; font-size:2.2rem; margin-bottom:1rem; }
-    .lak-cta p { color:rgba(255,255,255,0.7); margin-bottom:2rem; font-size:1rem; }
-    .lak-cta-buttons { display:flex; gap:1.5rem; justify-content:center; flex-wrap:wrap; }
-    .lak-phone-note { font-size:0.85rem; color:rgba(255,255,255,0.55); margin-top:0.5rem; }
     .btn-outline-dark { display:inline-flex; align-items:center; gap:0.5rem; padding:0.75rem 1.5rem; border:1.5px solid var(--navy); border-radius:var(--r-sm); color:var(--navy); font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:0.9rem; text-decoration:none; transition:all 0.2s; }
     .btn-outline-dark:hover { background:var(--navy); color:#fff; }
-    .lak-service-card ul li::before { content:''; display:inline-block; width:8px; height:8px; background:currentColor; border-radius:50%; flex-shrink:0; }
   </style>
 </head>
 <body>
@@ -102,34 +116,46 @@
 <!-- WHY SECTION -->
 <section class="section-pad" style="background:var(--white)">
   <div class="container">
-    <div class="section-header centered reveal">
-      <span class="label">Miért fontos?</span>
-      <span class="line-accent"></span>
-      <h2>Miért van szüksége hivatalos tervre?</h2>
-      <p style="max-width:700px;margin-left:auto;margin-right:auto">Az ország egyre több területén szigorodtak a vízmű előírások. Hivatalos mérnöki terv és engedély szükséges a víz- és szennyvíz bekötésekhez – még akkor is, ha korábban nem kellett.</p>
-      <p style="max-width:700px;margin-left:auto;margin-right:auto;margin-top:1rem;color:var(--text-light)">Sok ingatlan tulajdonos kerül ebbe a helyzetbe. Mi segítünk eligazodni a folyamatban – 30+ év tapasztalattal intézünk mindent Ön helyett.</p>
-    </div>
-    <div class="lak-why-grid">
-      <div class="lak-why-card reveal">
-        <div class="lak-why-icon">
-          <svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+    <div class="lak-why-wrap reveal">
+      <div class="lak-why-left">
+        <span class="label">Miért fontos?</span>
+        <span class="line-accent"></span>
+        <h2>Miért van szüksége<br>hivatalos tervre?</h2>
+        <p>Az ország egyre több területén szigorodtak a vízmű előírások. Hivatalos mérnöki terv és engedély szükséges a víz- és szennyvíz bekötésekhez – még akkor is, ha korábban nem kellett.</p>
+        <p>Sok ingatlan tulajdonos kerül ebbe a helyzetbe. Mi segítünk eligazodni – 30+ év tapasztalattal intézünk mindent Ön helyett.</p>
+        <div class="lak-precision-box">
+          <strong>Precizitás mindenekelőtt</strong>
+          <p>Minden tervet legalább kétszer ellenőrzünk mielőtt benyújtjuk. Egyetlen hiányosság sem kerülhet a hatóság elé – ez az ügyfeleink idejét és pénzét védi.</p>
         </div>
-        <h3>Kötelező terv</h3>
-        <p>A vízmű már nem engedélyezi a bekötést hivatalos mérnöki terv és engedély nélkül</p>
       </div>
-      <div class="lak-why-card reveal reveal-delay-1">
-        <div class="lak-why-icon">
-          <svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      <div class="lak-why-right">
+        <div class="lak-why-card">
+          <div class="lak-why-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          </div>
+          <div>
+            <h3>Kötelező terv</h3>
+            <p>A vízmű már nem engedélyezi a bekötést hivatalos mérnöki terv és engedély nélkül</p>
+          </div>
         </div>
-        <h3>Gyors ügyintézés</h3>
-        <p>Jellemzően 4-6 hét alatt elkészül a terv és megszerzünk minden engedélyt</p>
-      </div>
-      <div class="lak-why-card reveal reveal-delay-2">
-        <div class="lak-why-icon">
-          <svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        <div class="lak-why-card">
+          <div class="lak-why-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <div>
+            <h3>Gyors ügyintézés</h3>
+            <p>Jellemzően 4-6 hét alatt elkészül a terv és megszerzünk minden engedélyt</p>
+          </div>
         </div>
-        <h3>Komplett szolgáltatás</h3>
-        <p>Tervezéstől a kivitelezésig mindent mi intézünk – nem kell több céggel foglalkoznia</p>
+        <div class="lak-why-card">
+          <div class="lak-why-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <div>
+            <h3>Komplett szolgáltatás</h3>
+            <p>Tervezéstől a kivitelezésig mindent mi intézünk – nem kell több céggel foglalkoznia</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -157,9 +183,9 @@
           <li>Minden hatósági ügyintézés</li>
         </ul>
         <div class="lak-timeline-label">Határidő: 4-6 hét</div>
-        <a href="kapcsolat.html" class="btn-outline-dark">Árajánlat kérése</a>
+        <a href="kapcsolat.html" class="btn-svc-green">Árajánlat kérése <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
-      <div class="lak-service-card featured reveal reveal-delay-1">
+      <div class="lak-service-card alt reveal reveal-delay-1">
         <div class="lak-service-icon">
           <svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"/></svg>
         </div>
@@ -172,7 +198,7 @@
           <li>Átadás és dokumentáció</li>
         </ul>
         <div class="lak-timeline-label">Határidő: 6-8 hét összesen</div>
-        <a href="kapcsolat.html" class="btn btn-cta-orange">Árajánlat kérése<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="kapcsolat.html" class="btn-svc-teal">Árajánlat kérése <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
     </div>
   </div>
@@ -186,15 +212,39 @@
       <span class="line-accent"></span>
       <h2>Egyszerű folyamat – lépésről lépésre</h2>
     </div>
-    <div class="process-grid">
-      <div class="proc-card reveal"><div class="proc-num">01</div><h4>Kapcsolatfelvétel</h4><p>Telefonon vagy e-mailben megadja a címet, utcát és röviden leírja mit szeretne</p></div>
-      <div class="proc-card reveal reveal-delay-1"><div class="proc-num">02</div><h4>Gyors árajánlat</h4><p>Ha nem bonyolult, telefonon is tudunk árajánlatot adni. Bonyolultabb esetben ingyenes helyszíni konzultáció</p></div>
-      <div class="proc-card reveal reveal-delay-2"><div class="proc-num">03</div><h4>Megbízás</h4><p>Ha az ár rendben van, megbeszéljük a részleteket és aláírjuk a szerződést</p></div>
-      <div class="proc-card reveal reveal-delay-3"><div class="proc-num">04</div><h4>Tervezés</h4><p>Elkészítjük a hivatalos mérnöki tervet (4-6 hét)</p></div>
-      <div class="proc-card reveal"><div class="proc-num">05</div><h4>Engedélyezés</h4><p>Beszerzünk minden szükséges hatósági engedélyt</p></div>
-      <div class="proc-card reveal reveal-delay-1"><div class="proc-num">06</div><h4>Anyagbeszerzés</h4><p>Segítünk kiválasztani a megfelelő anyagokat (ha kivitelezést is vállaltunk)</p></div>
-      <div class="proc-card reveal reveal-delay-2"><div class="proc-num">07</div><h4>Kivitelezés</h4><p>Megcsináljuk a bekötést (ha ezt is rendelte)</p></div>
-      <div class="proc-card reveal reveal-delay-3"><div class="proc-num">08</div><h4>Átadás</h4><p>Postán vagy személyesen átadjuk a dokumentációt. Kész, használhatja a rendszert!</p></div>
+    <div class="proc-timeline reveal">
+      <div class="proc-step">
+        <div class="proc-step-left"><div class="proc-step-num">01</div><div class="proc-step-line"></div></div>
+        <div class="proc-step-right"><h4>Kapcsolatfelvétel</h4><p>Telefonon vagy e-mailben megadja a címet, utcát és röviden leírja mit szeretne</p></div>
+      </div>
+      <div class="proc-step">
+        <div class="proc-step-left"><div class="proc-step-num">02</div><div class="proc-step-line"></div></div>
+        <div class="proc-step-right"><h4>Gyors árajánlat</h4><p>Ha nem bonyolult, telefonon is tudunk árajánlatot adni. Bonyolultabb esetben ingyenes helyszíni konzultáció</p></div>
+      </div>
+      <div class="proc-step">
+        <div class="proc-step-left"><div class="proc-step-num">03</div><div class="proc-step-line"></div></div>
+        <div class="proc-step-right"><h4>Megbízás</h4><p>Ha az ár rendben van, megbeszéljük a részleteket és aláírjuk a szerződést</p></div>
+      </div>
+      <div class="proc-step">
+        <div class="proc-step-left"><div class="proc-step-num">04</div><div class="proc-step-line"></div></div>
+        <div class="proc-step-right"><h4>Tervezés</h4><p>Elkészítjük a hivatalos mérnöki tervet. Minden tervet kétszer ellenőrzünk mielőtt benyújtjuk. (4-6 hét)</p></div>
+      </div>
+      <div class="proc-step">
+        <div class="proc-step-left"><div class="proc-step-num">05</div><div class="proc-step-line"></div></div>
+        <div class="proc-step-right"><h4>Engedélyezés</h4><p>Beszerzünk minden szükséges hatósági engedélyt – Ön nem kell hogy hatósággal foglalkozzon</p></div>
+      </div>
+      <div class="proc-step">
+        <div class="proc-step-left"><div class="proc-step-num">06</div><div class="proc-step-line"></div></div>
+        <div class="proc-step-right"><h4>Anyagbeszerzés</h4><p>Segítünk kiválasztani a megfelelő anyagokat (ha kivitelezést is vállaltunk)</p></div>
+      </div>
+      <div class="proc-step">
+        <div class="proc-step-left"><div class="proc-step-num">07</div><div class="proc-step-line"></div></div>
+        <div class="proc-step-right"><h4>Kivitelezés</h4><p>Megcsináljuk a bekötést (ha ezt is rendelte)</p></div>
+      </div>
+      <div class="proc-step">
+        <div class="proc-step-left"><div class="proc-step-num">08</div><div class="proc-step-line"></div></div>
+        <div class="proc-step-right"><h4>Átadás</h4><p>Postán vagy személyesen átadjuk a dokumentációt. Kész, használhatja a rendszert!</p></div>
+      </div>
     </div>
   </div>
 </section>
