@@ -145,14 +145,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-cta-orange {
-  background: var(--accent);
+  background: var(--primary);
   color: var(--white);
   border-color: var(--accent);
   box-shadow: 0 4px 16px rgba(139,191,64,0.3);
   font-weight: 700;
 }
 .btn-cta-orange:hover {
-  background: var(--accent-dark);
+  background: var(--primary-dark);
   border-color: var(--accent-dark);
   box-shadow: 0 8px 28px rgba(139,191,64,0.45);
 }
@@ -188,7 +188,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-logo { display: flex; align-items: center; line-height: 1; }
 .nav-logo img {
-  height: 48px; width: auto; display: block;
+  height: 70px; width: auto; display: block;
   filter: brightness(1.8) contrast(0.9);
 }
 
@@ -1050,20 +1050,20 @@ input, textarea, select {
   .process-step-content h3 { padding-top: 0; }
 }
 
-/* ── TEAL BUTTON OVERRIDES (accent color for all CTAs) ── */
+/* ── GREEN BUTTON OVERRIDES (primary color for all CTAs) ── */
 .btn-primary,
 .btn-cta-orange {
-  background: var(--accent) !important;
-  border-color: var(--accent) !important;
-  box-shadow: none;
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+  box-shadow: 0 4px 16px rgba(139,191,64,0.3) !important;
+  color: var(--white) !important;
 }
 .btn-primary:hover,
 .btn-cta-orange:hover {
-  background: var(--accent-dark) !important;
-  border-color: var(--accent-dark) !important;
-  box-shadow: 0 8px 24px rgba(8,145,178,0.35) !important;
+  background: var(--primary-dark) !important;
+  border-color: var(--primary-dark) !important;
+  box-shadow: 0 8px 24px rgba(139,191,64,0.45) !important;
 }
-.btn-cta-orange { box-shadow: 0 4px 16px rgba(8,145,178,0.25) !important; }
 .btn-outline-orange { border-color: rgba(255,255,255,0.4) !important; }
 .btn-outline-orange:hover {
   background: rgba(255,255,255,0.1) !important;
