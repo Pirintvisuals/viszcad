@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lakossági Szolgáltatások – ViszCAD Mérnökiroda</title>
+  <meta name="description" content="Víz- és szennyvíz bekötés tervezése és kivitelezése magánszemélyeknek Kazincbarcikán és Miskolcon. Gyors ügyintézés, komplett szolgáltatás.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .lak-why-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:2rem; }
+    @media (max-width:768px) { .lak-why-grid { grid-template-columns:1fr; } }
+    .lak-why-card { background:var(--white); border-radius:var(--r-md); padding:2rem; box-shadow:0 2px 12px rgba(0,0,0,0.06); text-align:center; }
+    .lak-why-icon { width:56px; height:56px; background:rgba(8,145,178,0.1); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 1rem; }
+    .lak-why-icon svg { width:26px; height:26px; stroke:#0891B2; fill:none; }
+    .lak-why-card h3 { font-size:1rem; color:var(--navy); margin-bottom:0.5rem; }
+    .lak-why-card p { font-size:0.88rem; color:var(--text-light); line-height:1.6; }
+    .lak-service-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:2rem; margin-top:2rem; }
+    @media (max-width:768px) { .lak-service-grid { grid-template-columns:1fr; } }
+    .lak-service-card { background:var(--white); border-radius:var(--r-md); padding:2.5rem; box-shadow:0 4px 20px rgba(0,0,0,0.08); border-top:4px solid #8BBF40; }
+    .lak-service-card.featured { border-top-color:#0891B2; }
+    .lak-service-icon { width:52px; height:52px; background:rgba(139,191,64,0.1); border-radius:var(--r-sm); display:flex; align-items:center; justify-content:center; margin-bottom:1.25rem; }
+    .lak-service-card.featured .lak-service-icon { background:rgba(8,145,178,0.1); }
+    .lak-service-icon svg { width:26px; height:26px; stroke:#8BBF40; fill:none; }
+    .lak-service-card.featured .lak-service-icon svg { stroke:#0891B2; }
+    .lak-service-card h3 { font-size:1.25rem; color:var(--navy); margin-bottom:0.75rem; }
+    .lak-service-card p { color:var(--text-light); font-size:0.92rem; line-height:1.7; margin-bottom:1.25rem; }
+    .lak-service-card ul { list-style:none; margin-bottom:1.5rem; }
+    .lak-service-card ul li { font-size:0.88rem; color:var(--text-light); padding:0.35rem 0; border-bottom:1px solid #f3f4f6; display:flex; align-items:center; gap:0.5rem; }
+    .lak-service-card ul li::before { content:'checkmark'; color:#8BBF40; font-weight:700; }
+    .lak-service-card.featured ul li::before { color:#0891B2; }
+    .lak-timeline-label { font-family:'Space Grotesk',sans-serif; font-size:0.78rem; font-weight:700; color:#0891B2; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem; }
+    .process-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
+    @media (max-width:900px) { .process-grid { grid-template-columns:repeat(2,1fr); } }
+    @media (max-width:500px) { .process-grid { grid-template-columns:1fr; } }
+    .proc-card { background:var(--white); border-radius:var(--r-sm); padding:1.5rem; box-shadow:0 2px 8px rgba(0,0,0,0.05); }
+    .proc-num { font-family:'Space Grotesk',sans-serif; font-size:2rem; font-weight:700; color:rgba(139,191,64,0.3); line-height:1; margin-bottom:0.5rem; }
+    .proc-card h4 { font-size:0.95rem; color:var(--navy); margin-bottom:0.35rem; }
+    .proc-card p { font-size:0.82rem; color:var(--text-light); line-height:1.6; }
+    .guarantee-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem; }
+    @media (max-width:768px) { .guarantee-grid { grid-template-columns:1fr; } }
+    .guarantee-card { display:flex; gap:1.25rem; align-items:flex-start; padding:1.5rem; background:var(--white); border-radius:var(--r-sm); box-shadow:0 2px 8px rgba(0,0,0,0.05); }
+    .guarantee-icon { width:48px; height:48px; background:rgba(139,191,64,0.1); border-radius:var(--r-sm); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .guarantee-icon svg { width:22px; height:22px; stroke:#8BBF40; fill:none; }
+    .guarantee-card h4 { font-size:0.95rem; color:var(--navy); margin-bottom:0.35rem; }
+    .guarantee-card p { font-size:0.85rem; color:var(--text-light); line-height:1.6; }
+    .lak-faq-list { max-width:760px; margin:2rem auto 0; display:flex; flex-direction:column; gap:1rem; }
+    .lak-cta { background:#0F172A; padding:5rem 0; text-align:center; }
+    .lak-cta h2 { color:#fff; font-size:2.2rem; margin-bottom:1rem; }
+    .lak-cta p { color:rgba(255,255,255,0.7); margin-bottom:2rem; font-size:1rem; }
+    .lak-cta-buttons { display:flex; gap:1.5rem; justify-content:center; flex-wrap:wrap; }
+    .lak-phone-note { font-size:0.85rem; color:rgba(255,255,255,0.55); margin-top:0.5rem; }
+    .btn-outline-dark { display:inline-flex; align-items:center; gap:0.5rem; padding:0.75rem 1.5rem; border:1.5px solid var(--navy); border-radius:var(--r-sm); color:var(--navy); font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:0.9rem; text-decoration:none; transition:all 0.2s; }
+    .btn-outline-dark:hover { background:var(--navy); color:#fff; }
+    .lak-service-card ul li::before { content:''; display:inline-block; width:8px; height:8px; background:currentColor; border-radius:50%; flex-shrink:0; }
+  </style>
+</head>
+<body>
+
+<nav class="nav" id="mainNav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="ViszCAD Mérnökiroda"></a>
+    <div class="nav-links">
+      <a href="index.html">Főoldal</a>
+      <a href="szolgaltatasok.html">Szolgáltatások</a>
+      <a href="lakossagi.html" class="active">Lakossági</a>
+      <a href="referenciak.html">Referenciák</a>
+      <a href="rolunk.html">Rólunk</a>
+      <a href="kapcsolat.html" class="nav-cta">Kapcsolat</a>
+    </div>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menü">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-mobile" id="mobileMenu">
+  <a href="index.html" onclick="closeMobile()">Főoldal</a>
+  <a href="szolgaltatasok.html" onclick="closeMobile()">Szolgáltatások</a>
+  <a href="lakossagi.html" onclick="closeMobile()">Lakossági</a>
+  <a href="referenciak.html" onclick="closeMobile()">Referenciák</a>
+  <a href="rolunk.html" onclick="closeMobile()">Rólunk</a>
+  <a href="kapcsolat.html" onclick="closeMobile()">Kapcsolat</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=80')"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="container page-hero-content">
+    <nav class="page-hero-breadcrumb" aria-label="Útvonal">
+      <a href="index.html">Főoldal</a>
+      <span>/</span>
+      <span>Lakossági</span>
+    </nav>
+    <h1>Lakossági Szolgáltatások</h1>
+    <p style="color:rgba(255,255,255,0.8);font-size:1.1rem;max-width:560px;margin-top:0.75rem;line-height:1.6">Víz- és szennyvíz bekötés tervezése és kivitelezése magánszemélyeknek</p>
+  </div>
+</div>
+
+<!-- WHY SECTION -->
+<section class="section-pad" style="background:var(--white)">
+  <div class="container">
+    <div class="section-header centered reveal">
+      <span class="label">Miért fontos?</span>
+      <span class="line-accent"></span>
+      <h2>Miért van szüksége hivatalos tervre?</h2>
+      <p style="max-width:700px;margin-left:auto;margin-right:auto">Miskolcon és környékén megváltoztak a vízmű szabályai. Most már hivatalos mérnöki terv és engedély szükséges a víz- és szennyvíz bekötésekhez – még akkor is, ha korábban nem kellett.</p>
+      <p style="max-width:700px;margin-left:auto;margin-right:auto;margin-top:1rem;color:var(--text-light)">Több száz ingatlan tulajdonos került ebbe a helyzetbe. Mi segítünk eligazodni a folyamatban és mindent intézünk Ön helyett.</p>
+    </div>
+    <div class="lak-why-grid">
+      <div class="lak-why-card reveal">
+        <div class="lak-why-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        </div>
+        <h3>Kötelező terv</h3>
+        <p>A vízmű már nem engedélyezi a bekötést hivatalos mérnöki terv és engedély nélkül</p>
+      </div>
+      <div class="lak-why-card reveal reveal-delay-1">
+        <div class="lak-why-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3>Gyors ügyintézés</h3>
+        <p>Jellemzően 4-6 hét alatt elkészül a terv és megszerzünk minden engedélyt</p>
+      </div>
+      <div class="lak-why-card reveal reveal-delay-2">
+        <div class="lak-why-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <h3>Komplett szolgáltatás</h3>
+        <p>Tervezéstől a kivitelezésig mindent mi intézünk – nem kell több céggel foglalkoznia</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TWO SERVICES -->
+<section class="section-pad" style="background:var(--gray-bg)">
+  <div class="container">
+    <div class="section-header centered reveal">
+      <span class="label">Szolgáltatások</span>
+      <span class="line-accent"></span>
+      <h2>Mit vállalunk magánszemélyeknek?</h2>
+    </div>
+    <div class="lak-service-grid">
+      <div class="lak-service-card reveal">
+        <div class="lak-service-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        </div>
+        <h3>Tervezés és engedélyezés</h3>
+        <p>Ha csak a tervre van szüksége és a kivitelezést másnak adja, mi elkészítjük a hivatalos tervdokumentációt és beszerzünk minden engedélyt.</p>
+        <ul>
+          <li>Helyszíni felmérés (ha szükséges)</li>
+          <li>Hivatalos tervdokumentáció</li>
+          <li>Vízjogi engedély beszerzése</li>
+          <li>Minden hatósági ügyintézés</li>
+        </ul>
+        <div class="lak-timeline-label">Határidő: 4-6 hét</div>
+        <a href="kapcsolat.html" class="btn-outline-dark">Árajánlat kérése</a>
+      </div>
+      <div class="lak-service-card featured reveal reveal-delay-1">
+        <div class="lak-service-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"/></svg>
+        </div>
+        <h3>Tervezés + kivitelezés</h3>
+        <p>A legtöbb ügyfél ezt választja: mi tervezzük, engedélyeztetjük ÉS meg is csináljuk a bekötést. Egy helyen minden.</p>
+        <ul>
+          <li>Tervezés és engedélyezés</li>
+          <li>Anyagbeszerzés (segítünk kiválasztani)</li>
+          <li>Teljes kivitelezés</li>
+          <li>Átadás és dokumentáció</li>
+        </ul>
+        <div class="lak-timeline-label">Határidő: 6-8 hét összesen</div>
+        <a href="kapcsolat.html" class="btn btn-cta-orange">Árajánlat kérése<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section-pad" style="background:var(--white)">
+  <div class="container">
+    <div class="section-header centered reveal">
+      <span class="label">Folyamat</span>
+      <span class="line-accent"></span>
+      <h2>Egyszerű folyamat – lépésről lépésre</h2>
+    </div>
+    <div class="process-grid">
+      <div class="proc-card reveal"><div class="proc-num">01</div><h4>Kapcsolatfelvétel</h4><p>Telefonon vagy e-mailben megadja a címet, utcát és röviden leírja mit szeretne</p></div>
+      <div class="proc-card reveal reveal-delay-1"><div class="proc-num">02</div><h4>Gyors árajánlat</h4><p>Ha nem bonyolult, telefonon is tudunk árajánlatot adni. Bonyolultabb esetben ingyenes helyszíni konzultáció</p></div>
+      <div class="proc-card reveal reveal-delay-2"><div class="proc-num">03</div><h4>Megbízás</h4><p>Ha az ár rendben van, megbeszéljük a részleteket és aláírjuk a szerződést</p></div>
+      <div class="proc-card reveal reveal-delay-3"><div class="proc-num">04</div><h4>Tervezés</h4><p>Elkészítjük a hivatalos mérnöki tervet (4-6 hét)</p></div>
+      <div class="proc-card reveal"><div class="proc-num">05</div><h4>Engedélyezés</h4><p>Beszerzünk minden szükséges hatósági engedélyt</p></div>
+      <div class="proc-card reveal reveal-delay-1"><div class="proc-num">06</div><h4>Anyagbeszerzés</h4><p>Segítünk kiválasztani a megfelelő anyagokat (ha kivitelezést is vállaltunk)</p></div>
+      <div class="proc-card reveal reveal-delay-2"><div class="proc-num">07</div><h4>Kivitelezés</h4><p>Megcsináljuk a bekötést (ha ezt is rendelte)</p></div>
+      <div class="proc-card reveal reveal-delay-3"><div class="proc-num">08</div><h4>Átadás</h4><p>Postán vagy személyesen átadjuk a dokumentációt. Kész, használhatja a rendszert!</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEES -->
+<section class="section-pad" style="background:var(--gray-bg)">
+  <div class="container">
+    <div class="section-header centered reveal">
+      <span class="label">Garanciák</span>
+      <span class="line-accent"></span>
+      <h2>Amit garantálunk</h2>
+    </div>
+    <div class="guarantee-grid">
+      <div class="guarantee-card reveal">
+        <div class="guarantee-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+        </div>
+        <div><h4>30+ év kivitelezői tapasztalat</h4><p>Nem csak tervezzük – tudjuk hogyan működik a gyakorlatban is. Az elmélet mellett a gyakorlat is megvan.</p></div>
+      </div>
+      <div class="guarantee-card reveal reveal-delay-1">
+        <div class="guarantee-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+        </div>
+        <div><h4>Érthető kommunikáció</h4><p>Nem mérnöki zsargonban beszélünk. Mindenki számára érthetően magyarázunk mindent.</p></div>
+      </div>
+      <div class="guarantee-card reveal">
+        <div class="guarantee-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <div><h4>Helyi ismeret</h4><p>Ismerjük a kazincbarcikai és miskolci vízművet, gyorsan tudunk intézni</p></div>
+      </div>
+      <div class="guarantee-card reveal reveal-delay-1">
+        <div class="guarantee-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <div><h4>Pontosság és határidő</h4><p>15 év alatt egyetlen projektet sem adtunk át késve. A vállalt határidőt tartjuk.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section-pad" style="background:var(--white)">
+  <div class="container">
+    <div class="section-header centered reveal">
+      <span class="label">GYIK</span>
+      <span class="line-accent"></span>
+      <h2>Amit a legtöbben kérdeznek</h2>
+    </div>
+    <div class="lak-faq-list">
+      
+      <details class="faq-item reveal" style="border:1px solid var(--gray-mid); border-radius:var(--r-sm); overflow:hidden;">
+        <summary style="padding:1.25rem 1.5rem; cursor:pointer; font-family:'Space Grotesk',sans-serif; font-weight:600; color:var(--navy); list-style:none; display:flex; justify-content:space-between; align-items:center;">
+          Mennyibe kerül egy víz-szennyvíz bekötés terve?
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div style="padding:0 1.5rem 1.25rem; color:var(--text-light); font-size:0.93rem; line-height:1.7; border-top:1px solid var(--gray-mid);">
+          Az ár a projekt méretétől, távolságtól és bonyolultságtól függ. Ingyenes konzultáción vagy telefonon pontos árajánlatot adunk. Kis helyi munkák esetén telefonos egyeztetés is elég, nagyobb távolságok esetén (50+ km) helyszíni felmérés szükséges.
+        </div>
+      </details>
+      
+      <details class="faq-item reveal reveal-delay-1" style="border:1px solid var(--gray-mid); border-radius:var(--r-sm); overflow:hidden;">
+        <summary style="padding:1.25rem 1.5rem; cursor:pointer; font-family:'Space Grotesk',sans-serif; font-weight:600; color:var(--navy); list-style:none; display:flex; justify-content:space-between; align-items:center;">
+          Tényleg kötelező a hivatalos terv?
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div style="padding:0 1.5rem 1.25rem; color:var(--text-light); font-size:0.93rem; line-height:1.7; border-top:1px solid var(--gray-mid);">
+          Igen. A vízmű szabályai szerint hivatalos mérnöki terv és vízjogi engedély szükséges. Enélkül nem csatlakoztatják a rendszerhez. Ez Miskolcon és környékén különösen fontos, mert mostanában szigorították a szabályokat.
+        </div>
+      </details>
+      
+      <details class="faq-item reveal reveal-delay-2" style="border:1px solid var(--gray-mid); border-radius:var(--r-sm); overflow:hidden;">
+        <summary style="padding:1.25rem 1.5rem; cursor:pointer; font-family:'Space Grotesk',sans-serif; font-weight:600; color:var(--navy); list-style:none; display:flex; justify-content:space-between; align-items:center;">
+          Mennyi ideig tart az egész folyamat?
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div style="padding:0 1.5rem 1.25rem; color:var(--text-light); font-size:0.93rem; line-height:1.7; border-top:1px solid var(--gray-mid);">
+          Csak tervezés: 4-6 hét. Tervezés + kivitelezés: 6-8 hét összesen. A pontos időt az ingyenes konzultáción mondjuk meg.
+        </div>
+      </details>
+      
+      <details class="faq-item reveal reveal-delay-3" style="border:1px solid var(--gray-mid); border-radius:var(--r-sm); overflow:hidden;">
+        <summary style="padding:1.25rem 1.5rem; cursor:pointer; font-family:'Space Grotesk',sans-serif; font-weight:600; color:var(--navy); list-style:none; display:flex; justify-content:space-between; align-items:center;">
+          Ti is megcsináljátok a bekötést vagy csak a tervet?
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div style="padding:0 1.5rem 1.25rem; color:var(--text-light); font-size:0.93rem; line-height:1.7; border-top:1px solid var(--gray-mid);">
+          Mindkettőt vállaljuk. Választhat hogy csak a tervet rendeli, vagy a teljes kivitelezést is. A legtöbb ügyfél a teljes csomagot választja, mert így egy helyen minden intézve van.
+        </div>
+      </details>
+      
+      <details class="faq-item reveal" style="border:1px solid var(--gray-mid); border-radius:var(--r-sm); overflow:hidden;">
+        <summary style="padding:1.25rem 1.5rem; cursor:pointer; font-family:'Space Grotesk',sans-serif; font-weight:600; color:var(--navy); list-style:none; display:flex; justify-content:space-between; align-items:center;">
+          Milyen területen dolgoznak?
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div style="padding:0 1.5rem 1.25rem; color:var(--text-light); font-size:0.93rem; line-height:1.7; border-top:1px solid var(--gray-mid);">
+          Kisebb lakossági munkák esetén Kazincbarcika, Miskolc és környékén (50-80 km). Nagyobb projektek esetén távolabbra is elmegyünk.
+        </div>
+      </details>
+      
+      <details class="faq-item reveal reveal-delay-1" style="border:1px solid var(--gray-mid); border-radius:var(--r-sm); overflow:hidden;">
+        <summary style="padding:1.25rem 1.5rem; cursor:pointer; font-family:'Space Grotesk',sans-serif; font-weight:600; color:var(--navy); list-style:none; display:flex; justify-content:space-between; align-items:center;">
+          Kell-e előleg?
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div style="padding:0 1.5rem 1.25rem; color:var(--text-light); font-size:0.93rem; line-height:1.7; border-top:1px solid var(--gray-mid);">
+          Igen, az előzetes felmérés és tervezés megkezdéséhez általában 50% előleget kérünk. A maradék 50%-ot a munka befejezésekor fizetik.
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="lak-cta">
+  <div class="container">
+    <h2>Kezdjük el a projektet!</h2>
+    <p>Hívjon minket vagy írjon e-mailt. Ingyenes konzultáción vagy akár telefonon is tudunk árajánlatot adni.</p>
+    <div class="lak-cta-buttons">
+      <div style="text-align:center">
+        <a href="tel:+36304057060" class="btn btn-cta-orange" style="font-size:1.1rem;padding:1rem 2rem">Hívjon most</a>
+        <p class="lak-phone-note">+36-30/405-70-60 vagy +36-20/224-62-60</p>
+      </div>
+      <div style="text-align:center">
+        <a href="kapcsolat.html" class="btn btn-outline" style="font-size:1.1rem;padding:1rem 2rem">Írjon e-mailt</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="images/logo.png" alt="ViszCAD Mérnökiroda">
+        </div>
+        <p>Professzionális vízgazdálkodási tervezés, műszaki ellenőrzés és felelős műszaki vezetés Kazincbarcikán és Észak-Magyarországon. Kamarai tag mérnökök, 20+ év tapasztalat.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Oldalak</h4>
+        <ul>
+          <li><a href="index.html">Főoldal</a></li>
+          <li><a href="szolgaltatasok.html">Szolgáltatások</a></li>
+          <li><a href="lakossagi.html">Lakossági</a></li>
+          <li><a href="referenciak.html">Referenciák</a></li>
+          <li><a href="rolunk.html">Rólunk</a></li>
+          <li><a href="kapcsolat.html">Kapcsolat</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Szakterületek</h4>
+        <ul>
+          <li><a href="szolgaltatasok.html">Közműtervezés</a></li>
+          <li><a href="szolgaltatasok.html">Szakértés</a></li>
+          <li><a href="szolgaltatasok.html">Felelős műszaki vezetés</a></li>
+          <li><a href="szolgaltatasok.html">Műszaki ellenőrzés</a></li>
+          <li><a href="szolgaltatasok.html">Hatósági ügyintézés</a></li>
+          <li><a href="szolgaltatasok.html">Kivitelezés</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Kapcsolat</h4>
+        <div class="footer-contact-item">
+          <span class="footer-contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <span>3700 Kazincbarcika,<br>Táncsics Mihály utca 28/A.</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="footer-contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.68 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <span><a href="tel:+36202246260">+36-20/224-62-60</a><br><a href="tel:+36304057060">+36-30/405-70-60</a></span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="footer-contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+          <a href="mailto:info@viszcadkft.hu">info@viszcadkft.hu</a>
+        </div>
+        <div class="footer-contact-item">
+          <span class="footer-contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+          <span>H–P: 8:00 – 16:30</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 ViszCAD Mérnökiroda Kft. Minden jog fenntartva.</span>
+      <span>Mérnöki tervezés <a href="kapcsolat.html">Kazincbarcikán</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

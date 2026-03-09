@@ -5,89 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rólunk – ViszCAD Mérnökiroda Kft.</title>
   <meta name="description" content="15+ éve nyújtunk professzionális mérnöki szolgáltatásokat Kazincbarcikán. Kamarai tag mérnökök, kiterjedt szakmai jogosultságok.">
-  <meta property="og:title" content="Rólunk – ViszCAD Mérnökiroda Kft.">
-  <meta property="og:description" content="Megismerni cégünket: több mint 20 év tapasztalat, 12 fős csapat, ISO 9001 minősítés.">
-  <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <style>
-    /* Timeline */
-    .timeline { position:relative; padding-left:2.5rem; margin-top:3rem; }
-    .timeline::before {
-      content:''; position:absolute; left:0; top:0; bottom:0;
-      width:2px;
-      background: repeating-linear-gradient(
-        to bottom,
-        var(--primary) 0px,
-        var(--primary) 8px,
-        transparent 8px,
-        transparent 18px
-      );
-    }
-    .timeline-item { position:relative; margin-bottom:3rem; }
-    .timeline-dot {
-      position:absolute; left:-2.85rem; top:0.2rem;
-      width:22px; height:22px; border-radius:50%;
-      background:var(--primary); border:3px solid var(--white);
-      box-shadow:0 0 0 3px var(--primary), 0 0 12px rgba(139,191,64,0.4);
-    }
-    .timeline-year {
-      font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:0.8rem;
-      color:var(--primary); letter-spacing:0.1em; margin-bottom:0.3rem;
-      text-transform:uppercase;
-    }
-    .timeline-item h3 { font-size:1.1rem; color:var(--navy); margin-bottom:0.4rem; }
-    .timeline-item p  { font-size:0.9rem; color:var(--text-light); line-height:1.65; }
-
-    /* Team grid */
     .team-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem; max-width:700px; }
-    .team-card {
-      background:var(--white); border-radius:var(--r-md);
-      overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,0.06);
-      transition:transform var(--t-med), box-shadow var(--t-med);
-    }
+    .team-card { background:var(--white); border-radius:var(--r-md); overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,0.06); transition:transform var(--t-med), box-shadow var(--t-med); }
     .team-card:hover { transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,0.12); }
-    .team-avatar-wrap { height:220px; overflow:hidden; }
-    .team-avatar-wrap img { width:100%; height:100%; object-fit:cover; transition:transform 0.5s ease; }
-    .team-card:hover .team-avatar-wrap img { transform:scale(1.04); }
+    .team-avatar-wrap { height:220px; overflow:hidden; background:#e2e8f0; display:flex; align-items:center; justify-content:center; }
+    .team-avatar-placeholder { width:80px; height:80px; border-radius:50%; background:#94a3b8; display:flex; align-items:center; justify-content:center; }
+    .team-avatar-placeholder svg { width:40px; height:40px; stroke:#fff; fill:none; }
     .team-body { padding:1.25rem 1.5rem 1.5rem; }
     .team-body h3 { font-size:1rem; color:var(--navy); margin-bottom:0.2rem; }
-    .team-body .team-role { font-size:0.82rem; color:var(--primary); font-weight:600; margin-bottom:0.6rem; display:block; }
+    .team-body .team-role { font-size:0.82rem; color:#0891B2; font-weight:600; margin-bottom:0.6rem; display:block; }
     .team-body p { font-size:0.82rem; color:var(--text-light); line-height:1.6; }
-    @media (max-width:600px) { .team-grid { grid-template-columns:1fr; } }
-    @media (max-width:600px)  { .team-grid { grid-template-columns:1fr 1fr; } }
-    @media (max-width:480px)  { .team-grid { grid-template-columns:1fr; } }
-
-    /* Values */
-    .values-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:1rem; }
-    .value-card {
-      padding:2rem; background:var(--white); border-radius:var(--r-md);
-      box-shadow:0 2px 12px rgba(0,0,0,0.06);
-      border-top:3px solid var(--primary);
-    }
-    .value-icon {
-      width:52px; height:52px; background:rgba(139,191,64,0.12); border-radius:var(--r-sm);
-      display:flex; align-items:center; justify-content:center; margin-bottom:1.25rem;
-    }
-    .value-icon svg { width:24px; height:24px; stroke:var(--primary); fill:none; }
+    @media (max-width:480px) { .team-grid { grid-template-columns:1fr; } }
+    .values-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem; margin-top:1rem; }
+    .value-card { padding:2rem; background:var(--white); border-radius:var(--r-md); box-shadow:0 2px 12px rgba(0,0,0,0.06); border-top:3px solid #8BBF40; }
+    .value-icon { width:52px; height:52px; background:rgba(139,191,64,0.12); border-radius:var(--r-sm); display:flex; align-items:center; justify-content:center; margin-bottom:1.25rem; }
+    .value-icon svg { width:24px; height:24px; stroke:#8BBF40; fill:none; }
     .value-card h3 { font-size:1.1rem; color:var(--navy); margin-bottom:0.6rem; }
-    .value-card p  { font-size:0.88rem; color:var(--text-light); line-height:1.65; }
+    .value-card p { font-size:0.88rem; color:var(--text-light); line-height:1.65; }
     @media (max-width:768px) { .values-grid { grid-template-columns:1fr; } }
-
-    /* Certs */
-    .certs-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:1rem; }
-    .cert-item {
-      display:flex; align-items:center; gap:1rem; padding:1.25rem;
-      background:var(--white); border-radius:var(--r-sm);
-      border:1px solid var(--gray-mid);
-    }
-    .cert-icon { width:44px; height:44px; background:rgba(139,191,64,0.1); border-radius:var(--r-sm); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-    .cert-icon svg { width:22px; height:22px; stroke:var(--primary); fill:none; }
-    .cert-item strong { display:block; font-family:'Space Grotesk',sans-serif; font-size:0.88rem; color:var(--navy); }
-    .cert-item span { font-size:0.78rem; color:var(--text-light); }
-    @media (max-width:768px) { .certs-grid { grid-template-columns:1fr; } }
+    .team-caps-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-top:1rem; }
+    .team-cap-card { padding:1.5rem 1rem; background:var(--white); border-radius:var(--r-sm); text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.05); }
+    .team-cap-icon { width:48px; height:48px; background:rgba(139,191,64,0.1); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 0.75rem; }
+    .team-cap-icon svg { width:22px; height:22px; stroke:#8BBF40; fill:none; }
+    .team-cap-card h4 { font-size:0.9rem; color:var(--navy); margin-bottom:0.25rem; }
+    .team-cap-card p { font-size:0.78rem; color:var(--text-light); }
+    @media (max-width:768px) { .team-caps-grid { grid-template-columns:repeat(2,1fr); } }
+    .lic-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:0.75rem; margin-top:1rem; }
+    .lic-item { display:flex; align-items:flex-start; gap:0.75rem; padding:1rem; background:var(--white); border-radius:var(--r-sm); border:1px solid #e5e7eb; }
+    .lic-code { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:0.82rem; color:#8BBF40; min-width:80px; flex-shrink:0; }
+    .lic-desc { font-size:0.8rem; color:var(--text-light); line-height:1.5; }
+    @media (max-width:768px) { .lic-grid { grid-template-columns:1fr; } }
   </style>
 </head>
 <body>
@@ -98,7 +50,8 @@
     <div class="nav-links">
       <a href="index.html">Főoldal</a>
       <a href="szolgaltatasok.html">Szolgáltatások</a>
-      <a href="projektek.html">Projektek</a>
+      <a href="lakossagi.html">Lakossági</a>
+      <a href="referenciak.html">Referenciák</a>
       <a href="rolunk.html" class="active">Rólunk</a>
       <a href="kapcsolat.html" class="nav-cta">Kapcsolat</a>
     </div>
@@ -107,11 +60,11 @@
     </button>
   </div>
 </nav>
-
 <div class="nav-mobile" id="mobileMenu">
   <a href="index.html" onclick="closeMobile()">Főoldal</a>
   <a href="szolgaltatasok.html" onclick="closeMobile()">Szolgáltatások</a>
-  <a href="projektek.html" onclick="closeMobile()">Projektek</a>
+  <a href="lakossagi.html" onclick="closeMobile()">Lakossági</a>
+  <a href="referenciak.html" onclick="closeMobile()">Referenciák</a>
   <a href="rolunk.html" onclick="closeMobile()">Rólunk</a>
   <a href="kapcsolat.html" onclick="closeMobile()">Kapcsolat</a>
 </div>
@@ -133,51 +86,60 @@
 <!-- INTRO -->
 <section class="section-pad" style="background:var(--white)">
   <div class="container">
-    <div class="intro-grid reveal">
-      <div class="intro-img-wrap">
-        <img class="intro-img-main" src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=900&q=80" alt="ViszCAD iroda" loading="lazy">
-        <div class="intro-img-badge">2003<br>óta</div>
-      </div>
-      <div class="intro-text">
-        <span class="label">Cégünkről</span>
-        <span class="line-accent"></span>
-        <h2>Megbízható mérnöki partner Észak-Magyarországon</h2>
-        <p>A ViszCAD Kft.-t 2003-ban alapítottuk Kazincbarcikán, azzal a céllal, hogy a régió önkormányzatai, iparvállalatai és magánszemélyei számára magas színvonalú mérnöki tervezési és geodéziai szolgáltatásokat nyújtsunk.</p>
-        <p>Több mint két évtized alatt több mint 150 projektet fejeztünk be Borsod-Abaúj-Zemplén és Heves megye területén. Csapatunk mérnökökből, geodétákból és tervezőkből áll – valamennyien okleveles szakemberek, folyamatos képzéssel.</p>
-        <p>A precizitás, a határidő-tartás és a nyílt kommunikáció nem csak jelszó nálunk – ezek azok az értékek, amelyek az ügyfeleink visszatérését biztosítják.</p>
-        <div class="intro-values">
-          <div class="intro-value">
-            <div class="intro-value-icon">
-              <svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
-            </div>
-            <div><strong>ISO 9001:2015</strong><span>Minőségirányítási tanúsítvány</span></div>
-          </div>
-          <div class="intro-value">
-            <div class="intro-value-icon">
-              <svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-            </div>
-            <div><strong>12 fős csapat</strong><span>Mérnökök és geodéták</span></div>
-          </div>
-          <div class="intro-value">
-            <div class="intro-value-icon">
-              <svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-            </div>
-            <div><strong>Modern technológia</strong><span>CAD, GIS, drón, BIM</span></div>
-          </div>
-          <div class="intro-value">
-            <div class="intro-value-icon">
-              <svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-            </div>
-            <div><strong>Helyi jelenlét</strong><span>Kazincbarcika, Borsod</span></div>
-          </div>
+    <div class="reveal">
+      <span class="label">Cégünkről</span>
+      <span class="line-accent"></span>
+      <h2>Megbízható mérnöki partner Észak-Magyarországon</h2>
+      <p style="color:var(--text-light);line-height:1.75;max-width:800px;margin-top:1rem">A ViszCAD Mérnökiroda Kft.-t 2011-ben alapítottuk Kazincbarcikán azzal a céllal, hogy a régió önkormányzatai, iparvállalatai és magánszemélyei számára magas színvonalú mérnöki szolgáltatásokat nyújtsunk.</p>
+      <p style="color:var(--text-light);line-height:1.75;max-width:800px;margin-top:1rem">Az elmúlt 15 év alatt több mint 150 projektet fejeztünk be elsősorban Borsod-Abaúj-Zemplén Vármegye és a környező térségek területén. Csapatunk 2 fő vezető mérnökből és a szükség szerint bevont nagy tapasztalatú külsős tervezőkből, szakértőkből áll.</p>
+      <p style="color:var(--text-light);line-height:1.75;max-width:800px;margin-top:1rem">A precizitás, a határidőtartás és a nyílt kommunikáció és a szakértelem nem csak jelszó nálunk – ezek azok az értékek, amelyek az ügyfeleink visszatérését biztosítják.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM CAPABILITIES -->
+<section class="section-pad" style="background:var(--gray-bg)">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">Csapat</span>
+      <span class="line-accent"></span>
+      <h2>2 fő vezető mérnök és a partnereink</h2>
+    </div>
+    <div class="team-caps-grid">
+      <div class="team-cap-card reveal">
+        <div class="team-cap-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="#8BBF40"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
         </div>
+        <h4>Mérnökök és geodéták</h4>
+        <p></p>
+      </div>
+      <div class="team-cap-card reveal reveal-delay-1">
+        <div class="team-cap-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="#8BBF40"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        </div>
+        <h4>Modern technológia</h4>
+        <p>CAD, drón</p>
+      </div>
+      <div class="team-cap-card reveal reveal-delay-2">
+        <div class="team-cap-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="#8BBF40"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <h4>Helyi jelenlét</h4>
+        <p>Kazincbarcika, Miskolc</p>
+      </div>
+      <div class="team-cap-card reveal reveal-delay-3">
+        <div class="team-cap-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="#8BBF40"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064"/></svg>
+        </div>
+        <h4>Észak-Magyarország</h4>
+        <p></p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- VALUES -->
-<section class="section-pad" style="background:var(--gray-bg)">
+<section class="section-pad" style="background:var(--white)">
   <div class="container">
     <div class="section-header centered reveal">
       <span class="label">Értékeink</span>
@@ -188,146 +150,101 @@
     <div class="values-grid">
       <div class="value-card reveal">
         <div class="value-icon">
-          <svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="#8BBF40"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
         </div>
         <h3>Precizitás mindenekelőtt</h3>
-        <p>Minden tervet legalább két szakértő ellenőriz. A geodéziai méréseinknél 0,5 cm-es pontosság az alap, nem az elvárás csúcsa. Mert a kivitelező nem talál mentsége a rossz tervben.</p>
+        <p>Minden tervet szakértő módon ellenőrzünk. A geodéziai felméréseinknél a pontosság az alap, nem az elvárás csúcsa. Így a kivitelező nem talál mentsége a hibás tervben.</p>
       </div>
       <div class="value-card reveal reveal-delay-1">
         <div class="value-icon">
-          <svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="#8BBF40"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
         </div>
-        <h3>Határidő-tartás</h3>
-        <p>Húsz év alatt nem volt olyan megbízásunk, amelyet ne fejeztünk volna be a vállalt határidőre. Tudjuk, hogy az önkormányzatok pályázatai és a vállalati beruházások az időre mennek.</p>
+        <h3>Határidő tartás</h3>
+        <p>15 év alatt nem volt olyan megbízásunk, amelyet ne fejeztünk volna be a vállalt határidőre. Tudjuk, hogy az önkormányzatok pályázatai és a vállalati beruházások határidejei rendkívül fontosak.</p>
       </div>
       <div class="value-card reveal reveal-delay-2">
         <div class="value-icon">
-          <svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+          <svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="#8BBF40"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
         </div>
         <h3>Nyílt kommunikáció</h3>
-        <p>Az ügyfelünk nem vár heteket egy e-mailre. Minden projektünkhöz dedikált kapcsolattartót rendelünk, aki valóban ismeri az adott munkát és azonnal tud válaszolni.</p>
+        <p>Az ügyfeleink nem várnak heteket egy e-mailre. Minden projektünkhöz dedikált kapcsolattartót rendelünk, aki valóban ismeri az adott munkát és azonnal tud válaszolni a kérdésekre. Nincsenek eltitkolt költségek, kockázatok.</p>
+      </div>
+      <div class="value-card reveal reveal-delay-3">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="#8BBF40"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+        </div>
+        <h3>Szakértelem</h3>
+        <p>A tevékenységeinkben rendkívül nagy előny a kivitelezésben szerzett több évtizedes tapasztalat, így terveink megvalósítható megoldásokat tartalmaznak.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- HISTORY TIMELINE -->
-<section class="section-pad" style="background:var(--white)">
-  <div class="container">
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start;">
-      <div class="reveal">
-        <span class="label">Történetünk</span>
-        <span class="line-accent"></span>
-        <h2>Két évtized, egy cél: precíz mérnöki munka</h2>
-        <p style="color:var(--text-light); margin-top:1rem; line-height:1.75">Kazincbarcikán, Borsod-Abaúj-Zemplén megye szívében kezdtük el a munkát. Azóta regionális irodából megye egészén ismert tervezővé nőttük ki magunkat – anélkül, hogy elvesztettük volna a személyes kapcsolatot ügyfeleinkkel.</p>
-      </div>
-      <div class="timeline reveal">
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-year">2003</div>
-          <h3>Alapítás</h3>
-          <p>Két okleveles mérnök megalapítja a ViszCAD Kft.-t Kazincbarcikán. Első projektünk: a város egyik lakótelepi vízközmű-hálózatának felújítása.</p>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-year">2007–2010</div>
-          <h3>Csapatbővítés és geodéziai divízió</h3>
-          <p>Geodéziai szakterület indítása saját műszerekkel. Az első drón-alapú felmérés elvégzése a régióban (2009). Létszám: 6 főre bővül.</p>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-year">2013</div>
-          <h3>ISO 9001 tanúsítás</h3>
-          <p>Belső minőségirányítási rendszer kidolgozása és ISO 9001:2008 tanúsítvány megszerzése. Az ügyfél-elégedettség formális mérése bevezetve.</p>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-year">2018–2020</div>
-          <h3>BIM és digitalizáció</h3>
-          <p>BIM-kompatibilis dokumentáció bevezetése, 3D pontfelhő-feldolgozás és online projekt-nyomkövető rendszer kiépítése. Létszám: 12 fő.</p>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-year">2024</div>
-          <h3>150+ referencia</h3>
-          <p>A 150. befejezett projekt elérése. Aktív megbízóink: 12 önkormányzat, 8 ipari vállalat és számos magánberuházó Borsod és Heves megye területén.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TEAM -->
+<!-- TEAM MEMBERS -->
 <section class="section-pad" style="background:var(--gray-bg)">
   <div class="container">
     <div class="section-header centered reveal">
       <span class="label">Csapatunk</span>
       <span class="line-accent"></span>
-      <h2>Az emberek a ViszCAD mögött</h2>
-      <p>Okleveles mérnökök, geodéták és tervezők, akik minden egyes projektbe a tudásukat és a szenvedélyüket hozzák.</p>
+      <h2>Az emberek a ViszCAD Mérnökiroda mögött</h2>
+      <p>Mérnökök, akik minden egyes projektbe a tudásukat és a szenvedélyüket hozzák.</p>
     </div>
     <div class="team-grid">
       <div class="team-card reveal">
         <div class="team-avatar-wrap">
-          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80" alt="Mantlik Péter" loading="lazy">
+          <div class="team-avatar-placeholder">
+            <svg viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke="#fff"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+          </div>
         </div>
         <div class="team-body">
           <h3>Mantlik Péter</h3>
-          <span class="team-role">Ügyvezető mérnök</span>
-          <p>Kamarai szám: 05-01973, 05-50640. Felelős műszaki vezető, vízgazdálkodási tervező és műszaki ellenőr.</p>
+          <span class="team-role">ügyvezető, mérnök</span>
+          <p>Kamarai szám: 05-01973, 05-50640</p>
+          <p><a href="tel:+36304057060">+36-30/405-70-60</a></p>
         </div>
       </div>
       <div class="team-card reveal reveal-delay-1">
         <div class="team-avatar-wrap">
-          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80" alt="Viszoczky György" loading="lazy">
+          <div class="team-avatar-placeholder">
+            <svg viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke="#fff"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+          </div>
         </div>
         <div class="team-body">
           <h3>Viszoczky György</h3>
-          <span class="team-role">Mérnök</span>
-          <p>Kamarai szám: 05-1303. Szakértő, felelős műszaki vezető és műszaki ellenőr. +36-20/224-62-60</p>
+          <span class="team-role">ügyvezető, mérnök</span>
+          <p>Kamarai szám: 05-1303</p>
+          <p><a href="tel:+36202246260">+36-20/224-62-60</a></p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CERTIFICATIONS -->
+<!-- LICENSES -->
 <section class="section-pad" style="background:var(--white)">
   <div class="container">
     <div class="section-header reveal">
-      <span class="label">Tanúsítványok</span>
+      <span class="label">Jogosultságok</span>
       <span class="line-accent"></span>
-      <h2>Minősítések és tagságok</h2>
-      <p>Munkáink minőségét és jogszerűségét az alábbi tanúsítványok és szakmai tagságok garantálják.</p>
+      <h2>Magyar Mérnöki Kamarai jogosultságok</h2>
+      <p>Munkáink minőségét és jogszerűségét az alábbi jogosultságok garantálják.</p>
     </div>
-    <div class="certs-grid">
-      <div class="cert-item reveal">
-        <div class="cert-icon">
-          <svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
-        </div>
-        <div>
-          <strong>ISO 9001:2015</strong>
-          <span>Minőségirányítási rendszer tanúsítvány</span>
-        </div>
-      </div>
-      <div class="cert-item reveal reveal-delay-1">
-        <div class="cert-icon">
-          <svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
-        </div>
-        <div>
-          <strong>Magyar Mérnöki Kamara</strong>
-          <span>Tervező és szakértő mérnök jogosultság</span>
-        </div>
-      </div>
-      <div class="cert-item reveal reveal-delay-2">
-        <div class="cert-icon">
-          <svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064"/></svg>
-        </div>
-        <div>
-          <strong>FVM Geodéziai Engedély</strong>
-          <span>Ingatlan-nyilvántartási célú felmérés</span>
-        </div>
-      </div>
+    <div class="lic-grid reveal">
+      <div class="lic-item"><span class="lic-code">ME-É</span><span class="lic-desc">Magasépítési szakterület műszaki ellenőrzése</span></div>
+      <div class="lic-item"><span class="lic-code">ME-KÉ</span><span class="lic-desc">Közlekedési építmények építési munkáinak műszaki ellenőrzése</span></div>
+      <div class="lic-item"><span class="lic-code">ME-M</span><span class="lic-desc">Mélyépítési munkák és mélyépítési műtárgyak építésének műszaki ellenőrzése</span></div>
+      <div class="lic-item"><span class="lic-code">ME-VZ</span><span class="lic-desc">Vízgazdálkodási építmények építésének műszaki ellenőrzése</span></div>
+      <div class="lic-item"><span class="lic-code">MV-É</span><span class="lic-desc">Általános építmények építési-szerelési munkáinak felelős műszaki vezetése</span></div>
+      <div class="lic-item"><span class="lic-code">MV-KÉ</span><span class="lic-desc">Közlekedési építmények építési-szerelési munkáinak felelős műszaki vezetése</span></div>
+      <div class="lic-item"><span class="lic-code">MV-M</span><span class="lic-desc">Mélyépítési munkák és mélyépítési műtárgyak építésének felelős műszaki vezetése</span></div>
+      <div class="lic-item"><span class="lic-code">MV-VZ</span><span class="lic-desc">Vízgazdálkodási építmények építési-szerelési munkáinak felelős műszaki vezetése</span></div>
+      <div class="lic-item"><span class="lic-code">SZKV-1.1.</span><span class="lic-desc">Hulladékgazdálkodási szakértő</span></div>
+      <div class="lic-item"><span class="lic-code">SZKV-1.3.</span><span class="lic-desc">Víz- és földtani közeg védelem szakértő</span></div>
+      <div class="lic-item"><span class="lic-code">SZVV-3.2.</span><span class="lic-desc">Ivó- és ipari vízellátás, szennyvízelvezetés, nem szennyvízelvezetési célú csatornázása</span></div>
+      <div class="lic-item"><span class="lic-code">SZVV-3.4.</span><span class="lic-desc">Szennyvíztisztítás</span></div>
+      <div class="lic-item"><span class="lic-code">VZ-TEL</span><span class="lic-desc">Települési víziközmű tervezése</span></div>
+      <div class="lic-item"><span class="lic-code">VZ-TER</span><span class="lic-desc">Területi vízgazdálkodási építmények tervezése</span></div>
+      <div class="lic-item"><span class="lic-code">VZ-VG</span><span class="lic-desc">Vízgazdálkodási tervezési szakterület, egyéb vízgazdálkodási tervezési részszakterület</span></div>
     </div>
   </div>
 </section>
@@ -338,15 +255,11 @@
   <div class="cta-band-overlay"></div>
   <div class="container">
     <div class="cta-band-content reveal">
-      <span class="label" style="display:block;margin-bottom:1rem;color:var(--blue-light)">Dolgozzunk együtt</span>
       <h2>Megismert minket?<br>Dolgozzunk együtt!</h2>
       <p>Vegye fel velünk a kapcsolatot és derítse ki, hogyan segíthetünk a következő projektjén.</p>
       <div class="cta-band-actions">
-        <a href="kapcsolat.html" class="btn btn-cta-orange">
-          Kapcsolatfelvétel
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-        <a href="projektek.html" class="btn btn-outline">Referenciáink</a>
+        <a href="kapcsolat.html" class="btn btn-cta-orange">Kapcsolatfelvétel<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="referenciak.html" class="btn btn-outline">Referenciáink</a>
       </div>
     </div>
   </div>
@@ -355,37 +268,34 @@
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
-
       <div class="footer-brand">
         <div class="footer-logo">
           <img src="images/logo.png" alt="ViszCAD Mérnökiroda">
         </div>
         <p>Professzionális vízgazdálkodási tervezés, műszaki ellenőrzés és felelős műszaki vezetés Kazincbarcikán és Észak-Magyarországon. Kamarai tag mérnökök, 20+ év tapasztalat.</p>
       </div>
-
       <div class="footer-col">
         <h4>Oldalak</h4>
         <ul>
           <li><a href="index.html">Főoldal</a></li>
           <li><a href="szolgaltatasok.html">Szolgáltatások</a></li>
-          <li><a href="projektek.html">Projektek</a></li>
+          <li><a href="lakossagi.html">Lakossági</a></li>
+          <li><a href="referenciak.html">Referenciák</a></li>
           <li><a href="rolunk.html">Rólunk</a></li>
           <li><a href="kapcsolat.html">Kapcsolat</a></li>
         </ul>
       </div>
-
       <div class="footer-col">
         <h4>Szakterületek</h4>
         <ul>
-          <li><a href="szolgaltatasok.html">Vízközmű-tervezés</a></li>
-          <li><a href="szolgaltatasok.html">Csatornatervezés</a></li>
+          <li><a href="szolgaltatasok.html">Közműtervezés</a></li>
+          <li><a href="szolgaltatasok.html">Szakértés</a></li>
+          <li><a href="szolgaltatasok.html">Felelős műszaki vezetés</a></li>
           <li><a href="szolgaltatasok.html">Műszaki ellenőrzés</a></li>
-          <li><a href="szolgaltatasok.html">Engedélyezés</a></li>
+          <li><a href="szolgaltatasok.html">Hatósági ügyintézés</a></li>
           <li><a href="szolgaltatasok.html">Kivitelezés</a></li>
-          <li><a href="szolgaltatasok.html">Szakértői tevékenység</a></li>
         </ul>
       </div>
-
       <div class="footer-col">
         <h4>Kapcsolat</h4>
         <div class="footer-contact-item">
@@ -394,7 +304,7 @@
         </div>
         <div class="footer-contact-item">
           <span class="footer-contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.68 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
-          <span><a href="tel:+36202246260">+36-20 / 224-62-60</a><br><a href="tel:+36304057060">+36-30 / 405-70-60</a></span>
+          <span><a href="tel:+36202246260">+36-20/224-62-60</a><br><a href="tel:+36304057060">+36-30/405-70-60</a></span>
         </div>
         <div class="footer-contact-item">
           <span class="footer-contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
@@ -405,7 +315,6 @@
           <span>H–P: 8:00 – 16:30</span>
         </div>
       </div>
-
     </div>
     <div class="footer-bottom">
       <span>© 2026 ViszCAD Mérnökiroda Kft. Minden jog fenntartva.</span>
