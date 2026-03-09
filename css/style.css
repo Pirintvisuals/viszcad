@@ -188,8 +188,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-logo { display: flex; align-items: center; line-height: 1; }
 .nav-logo img {
-  height: 42px; width: auto; display: block;
+  height: 52px; width: auto; display: block;
   filter: brightness(1.8) contrast(0.9);
+}
+.home-nav-logo img {
+  height: 30px;
 }
 
 .nav-links {
@@ -674,7 +677,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .cta-band-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(15,23,42,0.94), rgba(139,191,64,0.25));
+  background: linear-gradient(135deg, rgba(15,23,42,0.72), rgba(10,18,35,0.82));
 }
 .cta-band-content {
   position: relative; z-index: 1;
@@ -722,13 +725,13 @@ h1, h2, h3, h4, h5, h6 {
 /* ── PAGE HERO (inner pages) ── */
 .page-hero {
   position: relative; height: 420px;
-  display: flex; align-items: flex-end;
-  padding-bottom: var(--sp-6); overflow: hidden;
+  display: flex; align-items: center;
+  overflow: hidden;
 }
 .page-hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
 .page-hero-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(15,23,42,0.9) 0%, rgba(15,23,42,0.4) 100%);
+  background: linear-gradient(to bottom, rgba(15,23,42,0.5) 0%, rgba(15,23,42,0.65) 50%, rgba(15,23,42,0.5) 100%);
 }
 .page-hero-content { position: relative; z-index: 1; }
 .page-hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); color: var(--white); margin-bottom: var(--sp-1); }
@@ -941,7 +944,7 @@ input, textarea, select {
 
 /* ── PAGE HERO (inner pages) MOBILE ── */
 @media (max-width: 767px) {
-  .page-hero { height: 260px; padding-bottom: var(--sp-4); }
+  .page-hero { height: 260px; }
   .page-hero h1 { font-size: clamp(1.75rem, 8vw, 2.5rem); }
 }
 @media (min-width: 768px) and (max-width: 1023px) {
