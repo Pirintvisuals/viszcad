@@ -188,7 +188,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-logo { display: flex; align-items: center; line-height: 1; }
 .nav-logo img {
-  height: 70px; width: auto; display: block;
+  height: 48px; width: auto; display: block;
   filter: brightness(1.8) contrast(0.9);
 }
 
@@ -232,7 +232,7 @@ h1, h2, h3, h4, h5, h6 {
   transition: background var(--t-med) !important;
 }
 .nav-cta::after { display: none !important; }
-.nav-cta:hover { background: var(--accent-dark) !important; }
+.nav-cta:hover { background: var(--primary-dark) !important; }
 
 .nav-hamburger {
   display: none;
@@ -1070,6 +1070,6 @@ input, textarea, select {
   border-color: var(--white) !important;
   box-shadow: none !important;
 }
-.nav-cta { background: var(--accent) !important; }
-.nav-cta:hover { background: var(--accent-dark) !important; }
+.nav-cta { background: var(--primary) !important; }
+.nav-cta:hover { background: var(--primary-dark) !important; }
 
