@@ -8,8 +8,46 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=3">
+  <link rel="stylesheet" href="css/style.css?v=4">
   <style>
+    /* INTRO SPLIT */
+    .rol-intro-wrap { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
+    @media (max-width:900px) { .rol-intro-wrap { grid-template-columns:1fr; gap:2rem; } }
+    .rol-intro-text h2 { font-size:2rem; color:var(--navy); margin:0.5rem 0 1.25rem; }
+    .rol-intro-text p { color:var(--text-light); line-height:1.8; margin-bottom:1rem; font-size:0.97rem; }
+    .rol-stats-row { display:flex; gap:2rem; margin-top:2rem; padding-top:2rem; border-top:1px solid var(--gray-mid); }
+    .rol-stat { text-align:center; }
+    .rol-stat-num { display:block; font-family:'Space Grotesk',sans-serif; font-size:2rem; font-weight:800; color:#8BBF40; line-height:1; }
+    .rol-stat-label { display:block; font-size:0.78rem; color:var(--text-light); margin-top:0.25rem; text-transform:uppercase; letter-spacing:0.08em; }
+    .rol-intro-img-wrap { position:relative; border-radius:var(--r-lg); overflow:hidden; box-shadow:0 16px 48px rgba(0,0,0,0.15); }
+    .rol-intro-img { width:100%; height:420px; object-fit:cover; display:block; transition:transform 0.6s ease; }
+    .rol-intro-img-wrap:hover .rol-intro-img { transform:scale(1.04); }
+    .rol-intro-img-badge { position:absolute; bottom:1.5rem; right:1.5rem; background:rgba(15,23,42,0.9); color:#fff; font-size:0.78rem; font-weight:600; padding:0.75rem 1rem; border-radius:var(--r-sm); text-align:center; display:flex; flex-direction:column; align-items:center; gap:0.4rem; backdrop-filter:blur(8px); }
+
+    /* VALUES hover */
+    .value-card { padding:2rem; background:var(--white); border-radius:var(--r-md); box-shadow:0 2px 12px rgba(0,0,0,0.06); border-top:3px solid #8BBF40; transition:transform 0.25s,box-shadow 0.25s; }
+    .value-card:hover { transform:translateY(-5px); box-shadow:0 12px 36px rgba(139,191,64,0.15); }
+    .value-icon { width:52px; height:52px; background:rgba(139,191,64,0.12); border-radius:var(--r-sm); display:flex; align-items:center; justify-content:center; margin-bottom:1.25rem; transition:transform 0.25s,background 0.25s; }
+    .value-card:hover .value-icon { transform:scale(1.1) rotate(-5deg); background:rgba(139,191,64,0.22); }
+    .value-icon svg { width:24px; height:24px; stroke:#8BBF40; fill:none; }
+    .value-card h3 { font-size:1.1rem; color:var(--navy); margin-bottom:0.6rem; }
+    .value-card p { font-size:0.88rem; color:var(--text-light); line-height:1.65; }
+
+    /* TEAM CAPS hover */
+    .team-cap-card { padding:1.5rem 1rem; background:var(--white); border-radius:var(--r-sm); text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.05); transition:transform 0.25s,box-shadow 0.25s,border-color 0.25s; border:1.5px solid transparent; }
+    .team-cap-card:hover { transform:translateY(-4px); box-shadow:0 8px 24px rgba(139,191,64,0.12); border-color:rgba(139,191,64,0.3); }
+    .team-cap-icon { width:48px; height:48px; background:rgba(139,191,64,0.1); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 0.75rem; transition:transform 0.25s,background 0.25s; }
+    .team-cap-card:hover .team-cap-icon { transform:scale(1.12); background:rgba(139,191,64,0.2); }
+    .team-cap-icon svg { width:22px; height:22px; stroke:#8BBF40; fill:none; }
+    .team-cap-card h4 { font-size:0.9rem; color:var(--navy); margin-bottom:0.25rem; }
+    .team-cap-card p { font-size:0.78rem; color:var(--text-light); }
+
+    /* LICENSE items hover */
+    .lic-item { display:flex; align-items:flex-start; gap:0.75rem; padding:1rem; background:var(--white); border-radius:var(--r-sm); border:1px solid #e5e7eb; transition:border-color 0.2s,box-shadow 0.2s; }
+    .lic-item:hover { border-color:rgba(139,191,64,0.4); box-shadow:0 4px 12px rgba(139,191,64,0.1); }
+    .lic-code { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:0.82rem; color:#8BBF40; min-width:80px; flex-shrink:0; }
+    .lic-desc { font-size:0.8rem; color:var(--text-light); line-height:1.5; }
+
     .team-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem; max-width:700px; }
     .team-card { background:var(--white); border-radius:var(--r-md); overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,0.06); transition:transform var(--t-med), box-shadow var(--t-med); }
     .team-card:hover { transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,0.12); }
@@ -22,23 +60,10 @@
     .team-body p { font-size:0.82rem; color:var(--text-light); line-height:1.6; }
     @media (max-width:480px) { .team-grid { grid-template-columns:1fr; } }
     .values-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem; margin-top:1rem; }
-    .value-card { padding:2rem; background:var(--white); border-radius:var(--r-md); box-shadow:0 2px 12px rgba(0,0,0,0.06); border-top:3px solid #8BBF40; }
-    .value-icon { width:52px; height:52px; background:rgba(139,191,64,0.12); border-radius:var(--r-sm); display:flex; align-items:center; justify-content:center; margin-bottom:1.25rem; }
-    .value-icon svg { width:24px; height:24px; stroke:#8BBF40; fill:none; }
-    .value-card h3 { font-size:1.1rem; color:var(--navy); margin-bottom:0.6rem; }
-    .value-card p { font-size:0.88rem; color:var(--text-light); line-height:1.65; }
     @media (max-width:768px) { .values-grid { grid-template-columns:1fr; } }
     .team-caps-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-top:1rem; }
-    .team-cap-card { padding:1.5rem 1rem; background:var(--white); border-radius:var(--r-sm); text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.05); }
-    .team-cap-icon { width:48px; height:48px; background:rgba(139,191,64,0.1); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 0.75rem; }
-    .team-cap-icon svg { width:22px; height:22px; stroke:#8BBF40; fill:none; }
-    .team-cap-card h4 { font-size:0.9rem; color:var(--navy); margin-bottom:0.25rem; }
-    .team-cap-card p { font-size:0.78rem; color:var(--text-light); }
     @media (max-width:768px) { .team-caps-grid { grid-template-columns:repeat(2,1fr); } }
     .lic-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:0.75rem; margin-top:1rem; }
-    .lic-item { display:flex; align-items:flex-start; gap:0.75rem; padding:1rem; background:var(--white); border-radius:var(--r-sm); border:1px solid #e5e7eb; }
-    .lic-code { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:0.82rem; color:#8BBF40; min-width:80px; flex-shrink:0; }
-    .lic-desc { font-size:0.8rem; color:var(--text-light); line-height:1.5; }
     @media (max-width:768px) { .lic-grid { grid-template-columns:1fr; } }
   </style>
 </head>
@@ -86,13 +111,27 @@
 <!-- INTRO -->
 <section class="section-pad" style="background:var(--white)">
   <div class="container">
-    <div class="reveal">
-      <span class="label">Cégünkről</span>
-      <span class="line-accent"></span>
-      <h2>Megbízható mérnöki partner Észak-Magyarországon</h2>
-      <p style="color:var(--text-light);line-height:1.75;max-width:800px;margin-top:1rem">A ViszCAD Mérnökiroda Kft.-t 2011-ben alapítottuk Kazincbarcikán azzal a céllal, hogy a régió önkormányzatai, iparvállalatai és magánszemélyei számára magas színvonalú mérnöki szolgáltatásokat nyújtsunk.</p>
-      <p style="color:var(--text-light);line-height:1.75;max-width:800px;margin-top:1rem">Az elmúlt 15 év alatt több mint 150 projektet fejeztünk be elsősorban Borsod-Abaúj-Zemplén Vármegye és a környező térségek területén. Csapatunk 2 fő vezető mérnökből és a szükség szerint bevont nagy tapasztalatú külsős tervezőkből, szakértőkből áll.</p>
-      <p style="color:var(--text-light);line-height:1.75;max-width:800px;margin-top:1rem">A precizitás, a határidőtartás és a nyílt kommunikáció és a szakértelem nem csak jelszó nálunk – ezek azok az értékek, amelyek az ügyfeleink visszatérését biztosítják.</p>
+    <div class="rol-intro-wrap reveal">
+      <div class="rol-intro-text">
+        <span class="label">Cégünkről</span>
+        <span class="line-accent"></span>
+        <h2>Megbízható mérnöki partner Észak-Magyarországon</h2>
+        <p>A ViszCAD Mérnökiroda Kft.-t 2011-ben alapítottuk Kazincbarcikán azzal a céllal, hogy a régió önkormányzatai, iparvállalatai és magánszemélyei számára magas színvonalú mérnöki szolgáltatásokat nyújtsunk.</p>
+        <p>Az elmúlt 15 év alatt több mint 150 projektet fejeztünk be elsősorban Borsod-Abaúj-Zemplén Vármegye és a környező térségek területén. Csapatunk 2 fő vezető mérnökből és a szükség szerint bevont nagy tapasztalatú külsős tervezőkből, szakértőkből áll.</p>
+        <p>A precizitás, a határidőtartás és a nyílt kommunikáció és a szakértelem nem csak jelszó nálunk – ezek azok az értékek, amelyek az ügyfeleink visszatérését biztosítják.</p>
+        <div class="rol-stats-row">
+          <div class="rol-stat"><span class="rol-stat-num">30+</span><span class="rol-stat-label">Év tapasztalat</span></div>
+          <div class="rol-stat"><span class="rol-stat-num">150+</span><span class="rol-stat-label">Sikeres projekt</span></div>
+          <div class="rol-stat"><span class="rol-stat-num">2</span><span class="rol-stat-label">Kamarai mérnök</span></div>
+        </div>
+      </div>
+      <div class="rol-intro-img-wrap">
+        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&q=80" alt="ViszCAD mérnöki munka" class="rol-intro-img">
+        <div class="rol-intro-img-badge">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8BBF40" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+          ISO 9001<br>Minősített
+        </div>
+      </div>
     </div>
   </div>
 </section>

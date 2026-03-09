@@ -188,11 +188,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-logo { display: flex; align-items: center; line-height: 1; }
 .nav-logo img {
-  height: 52px; width: auto; display: block;
+  height: 56px; width: auto; display: block;
   filter: brightness(1.8) contrast(0.9);
-}
-.home-nav-logo img {
-  height: 30px;
 }
 
 .nav-links {
@@ -691,6 +688,41 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 560px; margin: 0 auto var(--sp-6);
 }
 .cta-band-actions { display: flex; justify-content: center; gap: var(--sp-2); flex-wrap: wrap; }
+
+
+/* ── WHY US SECTION ── */
+.why-grid {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 1.5rem; margin-top: 3rem;
+}
+@media (max-width:1024px) { .why-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width:600px)  { .why-grid { grid-template-columns: 1fr; } }
+.why-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--r-md); padding: 2rem 1.5rem;
+  transition: background 0.28s, border-color 0.28s, transform 0.28s;
+  cursor: default; position: relative; overflow: hidden;
+}
+.why-card::before {
+  content:''; position:absolute; bottom:0; left:0; right:0; height:3px;
+  background: linear-gradient(90deg, #8BBF40, #A5D160);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.why-card:hover { background: rgba(139,191,64,0.08); border-color: rgba(139,191,64,0.3); transform: translateY(-5px); }
+.why-card:hover::before { transform: scaleX(1); }
+.why-card-icon {
+  width: 52px; height: 52px; background: rgba(139,191,64,0.12);
+  border-radius: var(--r-sm); display: flex; align-items: center;
+  justify-content: center; margin-bottom: 1.25rem;
+  transition: transform 0.25s, background 0.25s;
+}
+.why-card:hover .why-card-icon { transform: scale(1.1) rotate(-5deg); background: rgba(139,191,64,0.22); }
+.why-card-icon svg { width: 24px; height: 24px; }
+.why-card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 600; color: #fff; margin-bottom: 0.75rem; }
+.why-card p { font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.7; transition: color 0.28s; }
+.why-card:hover p { color: rgba(255,255,255,0.8); }
 
 /* ── FOOTER ── */
 .footer { background: #060D1A; color: rgba(255,255,255,0.7); padding: var(--sp-10) 0 var(--sp-4); }
