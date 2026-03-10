@@ -185,9 +185,8 @@ h1, h2, h3, h4, h5, h6 {
   transition: background var(--t-slow), padding var(--t-slow), box-shadow var(--t-slow);
 }
 .nav.scrolled {
-  background: rgba(15,23,42,0.97);
+  background: rgba(15,23,42,1);
   padding: 14px 0;
-  backdrop-filter: blur(12px);
 }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; }
 
