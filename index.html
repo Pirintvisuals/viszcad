@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=5">
+  <link rel="stylesheet" href="css/style.css?v=6">
 </head>
 <body>
 
@@ -325,41 +325,74 @@
 </section>
 
 <!-- PARTNEREINK -->
-<section class="section-pad" style="background:var(--white)">
+<section class="partners-band">
   <div class="container">
     <div class="section-header centered reveal">
       <span class="label">Partnereink</span>
       <span class="line-accent" style="margin-left:auto;margin-right:auto"></span>
       <h2>Partnereink</h2>
     </div>
-    <div class="partners-grid reveal" style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:3rem 4rem;margin-top:3rem">
-      <a href="#" class="partner-logo-link" title="NOX ZRT">
-        <img src="images/partners/nox.png" alt="NOX ZRT" style="max-height:80px;max-width:180px;object-fit:contain;filter:grayscale(1);opacity:0.7;transition:filter 0.3s,opacity 0.3s">
-      </a>
-      <a href="#" class="partner-logo-link" title="Tiszaújváros Transz">
-        <img src="images/partners/TT-logo-email-green.png" alt="Tiszaújváros Transz" style="max-height:80px;max-width:180px;object-fit:contain;filter:grayscale(1);opacity:0.7;transition:filter 0.3s,opacity 0.3s">
-      </a>
-      <a href="#" class="partner-logo-link" title="Mucsony">
-        <img src="images/partners/mucsony.jpg" alt="Mucsony" style="max-height:80px;max-width:180px;object-fit:contain;filter:grayscale(1);opacity:0.7;transition:filter 0.3s,opacity 0.3s">
-      </a>
-      <a href="#" class="partner-logo-link" title="GreenPlan">
-        <img src="images/partners/GP.png" alt="GreenPlan" style="max-height:80px;max-width:180px;object-fit:contain;filter:grayscale(1);opacity:0.7;transition:filter 0.3s,opacity 0.3s">
-      </a>
-      <a href="#" class="partner-logo-link" title="Feroép">
-        <img src="images/partners/feroép.png" alt="Feroép" style="max-height:80px;max-width:180px;object-fit:contain;filter:grayscale(1);opacity:0.7;transition:filter 0.3s,opacity 0.3s">
-      </a>
-      <a href="#" class="partner-logo-link" title="ÉRV">
-        <img src="images/partners/érv logó.png" alt="ÉRV" style="max-height:80px;max-width:180px;object-fit:contain;filter:grayscale(1);opacity:0.7;transition:filter 0.3s,opacity 0.3s">
-      </a>
+  </div>
+  <div class="marquee-outer">
+    <div class="marquee-track">
+      <div class="marquee-inner">
+        <a href="#" class="marquee-logo"><img src="images/partners/nox.png" alt="NOX ZRT"></a>
+        <a href="#" class="marquee-logo"><img src="images/partners/TT-logo-email-green.png" alt="Tiszaújváros Transz"></a>
+        <a href="#" class="marquee-logo"><img src="images/partners/mucsony.jpg" alt="Mucsony"></a>
+        <a href="#" class="marquee-logo"><img src="images/partners/GP.png" alt="GreenPlan"></a>
+        <a href="#" class="marquee-logo"><img src="images/partners/fero%C3%A9p.png" alt="Feroép"></a>
+        <a href="#" class="marquee-logo"><img src="images/partners/%C3%A9rv%20log%C3%B3.png" alt="ÉRV"></a>
+        <!-- duplicate for seamless loop -->
+        <a href="#" class="marquee-logo"><img src="images/partners/nox.png" alt="NOX ZRT"></a>
+        <a href="#" class="marquee-logo"><img src="images/partners/TT-logo-email-green.png" alt="Tiszaújváros Transz"></a>
+        <a href="#" class="marquee-logo"><img src="images/partners/mucsony.jpg" alt="Mucsony"></a>
+        <a href="#" class="marquee-logo"><img src="images/partners/GP.png" alt="GreenPlan"></a>
+        <a href="#" class="marquee-logo"><img src="images/partners/fero%C3%A9p.png" alt="Feroép"></a>
+        <a href="#" class="marquee-logo"><img src="images/partners/%C3%A9rv%20log%C3%B3.png" alt="ÉRV"></a>
+      </div>
     </div>
   </div>
 </section>
 <style>
-.partner-logo-link:hover img { filter:grayscale(0) !important; opacity:1 !important; }
+.partners-band { background: var(--white); padding: 80px 0 60px; }
+.marquee-outer {
+  overflow: hidden;
+  margin-top: 3rem;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+.marquee-track { display: flex; }
+.marquee-inner {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  padding: 16px 40px;
+  animation: marquee-scroll 28s linear infinite;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+@keyframes marquee-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-outer:hover .marquee-inner { animation-play-state: paused; }
+.marquee-logo {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  opacity: 1;
+  transition: transform 0.3s ease;
+}
+.marquee-logo:hover { transform: scale(1.08); }
+.marquee-logo img {
+  height: 72px;
+  max-width: 200px;
+  object-fit: contain;
+  filter: none;
+}
 </style>
 
-
-<!-- STATS BAND -->
+<!-- STATS BAND --><!-- STATS BAND -->
 <section class="stats-band">
   <div class="container">
     <div class="stats-band-grid">

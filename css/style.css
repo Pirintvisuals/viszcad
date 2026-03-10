@@ -176,12 +176,12 @@ h1, h2, h3, h4, h5, h6 {
   top: 0; left: 0; right: 0;
   z-index: 1000;
   padding: 12px 0;
+  border-bottom: none !important;
   transition: background var(--t-slow), padding var(--t-slow), box-shadow var(--t-slow);
 }
 .nav.scrolled {
   background: rgba(15,23,42,0.97);
   padding: 14px 0;
-  box-shadow: 0 2px 24px rgba(0,0,0,0.25);
   backdrop-filter: blur(12px);
 }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; }
