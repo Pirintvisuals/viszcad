@@ -80,6 +80,10 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--primary);
+  text-decoration: underline;
+  text-decoration-color: var(--primary);
+  text-underline-offset: 5px;
+  text-decoration-thickness: 3px;
 }
 
 .line-accent {
@@ -88,6 +92,7 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
   margin-bottom: var(--sp-2);
 }
+.label + .line-accent { display: none; }
 
 /* ── BUTTONS ── */
 /* All buttons share these base styles */
