@@ -33,7 +33,10 @@
       background-size:cover;
       background-position:center;
       position:relative;
+      display:flex; align-items:center; justify-content:center;
     }
+    .svc-num { font-family:'Space Grotesk',sans-serif; font-size:4.5rem; font-weight:800; color:rgba(139,191,64,0.4); line-height:1; pointer-events:none; user-select:none; transition:color 0.28s; }
+    .svc-photo-card:hover .svc-num { color:rgba(139,191,64,0.7); }
     .svc-photo-card-img::after {
       content:'';
       position:absolute;
@@ -61,9 +64,6 @@
     }
     .svc-photo-card:hover .svc-photo-card-cta { gap:10px; }
 
-    .egyeb-box { background:var(--gray-bg); border-radius:var(--r-md); padding:2.5rem; text-align:center; margin-top:3rem; }
-    .egyeb-box h3 { font-size:1.2rem; color:var(--navy); margin-bottom:0.75rem; }
-    .egyeb-box p { color:var(--text-light); margin-bottom:1.5rem; max-width:600px; margin-left:auto; margin-right:auto; }
   </style>
 </head>
 <body>
@@ -112,7 +112,7 @@
     <div class="svc-cards-grid">
 
       <a href="services/kozmutervezes.html" class="svc-photo-card reveal">
-        <div class="svc-photo-card-img" style="background-image:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=75')"></div>
+        <div class="svc-photo-card-img" style="background:linear-gradient(135deg,#0F172A 0%,#1a2e4a 100%)"><span class="svc-num">01</span></div>
         <div class="svc-photo-card-body">
           <h3>Közműtervezés</h3>
           <p>Ivóvíz, szennyvíz és csapadékvíz rendszerek tervezése</p>
@@ -121,7 +121,7 @@
       </a>
 
       <a href="services/szakertes.html" class="svc-photo-card reveal reveal-delay-1">
-        <div class="svc-photo-card-img" style="background-image:url('https://images.unsplash.com/photo-1590650153855-d9e808231d41?w=800&q=75')"></div>
+        <div class="svc-photo-card-img" style="background:linear-gradient(135deg,#0F172A 0%,#1a2e4a 100%)"><span class="svc-num">02</span></div>
         <div class="svc-photo-card-body">
           <h3>Szakértés</h3>
           <p>Hulladékgazdálkodási és vízügyi szakértői tevékenység</p>
@@ -130,7 +130,7 @@
       </a>
 
       <a href="services/felelos-muszaki-vezetes.html" class="svc-photo-card reveal reveal-delay-2">
-        <div class="svc-photo-card-img" style="background-image:url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&q=75')"></div>
+        <div class="svc-photo-card-img" style="background:linear-gradient(135deg,#0F172A 0%,#1a2e4a 100%)"><span class="svc-num">03</span></div>
         <div class="svc-photo-card-body">
           <h3>Felelős műszaki vezetés</h3>
           <p>Építési munkák műszaki vezetése és koordinációja</p>
@@ -139,7 +139,7 @@
       </a>
 
       <a href="services/muszaki-ellenorzes.html" class="svc-photo-card reveal">
-        <div class="svc-photo-card-img" style="background-image:url('https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?w=800&q=75')"></div>
+        <div class="svc-photo-card-img" style="background:linear-gradient(135deg,#0F172A 0%,#1a2e4a 100%)"><span class="svc-num">04</span></div>
         <div class="svc-photo-card-body">
           <h3>Műszaki ellenőrzés</h3>
           <p>Építési munkák szakmai felügyelete és ellenőrzése</p>
@@ -157,7 +157,7 @@
       </a>
 
       <a href="services/kivitelezes.html" class="svc-photo-card reveal reveal-delay-2">
-        <div class="svc-photo-card-img" style="background-image:url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&q=75')"></div>
+        <div class="svc-photo-card-img" style="background:linear-gradient(135deg,#0F172A 0%,#1a2e4a 100%)"><span class="svc-num">06</span></div>
         <div class="svc-photo-card-body">
           <h3>Kivitelezés</h3>
           <p>Vízvezeték és szennyvízvezeték építése</p>
@@ -167,11 +167,6 @@
 
     </div>
 
-    <div class="egyeb-box reveal">
-      <h3>Egyéb szolgáltatások</h3>
-      <p>Ha olyan munkát keres amely nincs felsorolva, vagy nem biztos hogy vállaljuk-e, kérjük lépjen kapcsolatba velünk. Szívesen segítünk vagy ajánlunk megfelelő szakembert.</p>
-      <a href="kapcsolat.html" class="btn btn-cta-orange">Kapcsolat<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-    </div>
   </div>
 </section>
 
