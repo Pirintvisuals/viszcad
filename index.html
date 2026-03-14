@@ -46,7 +46,7 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-bg" id="heroBg" style="display:flex;align-items:center;justify-content:center"><span style="font-family:Space Grotesk,sans-serif;font-size:clamp(8rem,20vw,18rem);font-weight:800;color:rgba(139,191,64,0.15);letter-spacing:-0.04em;user-select:none;position:relative;z-index:1">0A</span></div>
   <div class="hero-overlay"></div>
   <div class="hero-blueprint"></div>
   <div class="container">
@@ -123,18 +123,10 @@
       </div>
       <div class="about-tabs-right">
         <div class="about-tab-img-wrap">
-          <img class="about-tab-img active" id="tabImg0"
-            src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=900&q=80"
-            alt="Szakértelem" loading="lazy">
-          <img class="about-tab-img" id="tabImg1"
-            src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=900&q=80"
-            alt="Megbízhatóság" loading="lazy">
-          <img class="about-tab-img" id="tabImg2"
-            src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=80"
-            alt="Innováció" loading="lazy">
-          <img class="about-tab-img" id="tabImg3"
-            src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&q=80"
-            alt="Precizitás" loading="lazy">
+          <div class="about-tab-img active" id="tabImg0" style="background:linear-gradient(135deg,#0F172A 0%,#1a2e4a 100%);display:flex;align-items:center;justify-content:center"><span style="font-family:Space Grotesk,sans-serif;font-size:clamp(3rem,10vw,6rem);font-weight:800;color:rgba(139,191,64,0.2);letter-spacing:-0.02em;user-select:none">01</span></div>
+          <div class="about-tab-img" id="tabImg1" style="background:linear-gradient(135deg,#0F172A 0%,#1a2e4a 100%);display:flex;align-items:center;justify-content:center"><span style="font-family:Space Grotesk,sans-serif;font-size:clamp(3rem,10vw,6rem);font-weight:800;color:rgba(139,191,64,0.2);letter-spacing:-0.02em;user-select:none">02</span></div>
+          <div class="about-tab-img" id="tabImg2" style="background:linear-gradient(135deg,#0F172A 0%,#1a2e4a 100%);display:flex;align-items:center;justify-content:center"><span style="font-family:Space Grotesk,sans-serif;font-size:clamp(3rem,10vw,6rem);font-weight:800;color:rgba(139,191,64,0.2);letter-spacing:-0.02em;user-select:none">03</span></div>
+          <div class="about-tab-img" id="tabImg3" style="background:linear-gradient(135deg,#0F172A 0%,#1a2e4a 100%);display:flex;align-items:center;justify-content:center"><span style="font-family:Space Grotesk,sans-serif;font-size:clamp(3rem,10vw,6rem);font-weight:800;color:rgba(139,191,64,0.2);letter-spacing:-0.02em;user-select:none">04</span></div>
           <div class="intro-img-badge">ISO 9001<br>Minősített</div>
         </div>
         <div class="about-tab-content-wrap">
@@ -305,8 +297,10 @@
         </div>
       </a>
     </div>
-    <div style="text-align:center;margin-top:2.5rem" class="reveal">
-      <a href="szolgaltatasok.html" class="btn btn-outline" style="border-color:var(--navy);color:var(--navy)">Összes szolgáltatás megtekintése</a>
+    <div style="margin-top:2.5rem;background:var(--gray-bg);border-radius:var(--r-md);padding:2rem;text-align:center;border:1px solid var(--gray-mid)" class="reveal">
+      <h3 style="font-size:1.15rem;color:var(--navy);margin-bottom:0.6rem">Egyéb szolgáltatások</h3>
+      <p style="color:var(--text-light);margin-bottom:1.25rem;max-width:520px;margin-left:auto;margin-right:auto">Ha olyan megoldandó feladata van, amely nincs felsorolva, vagy nem biztos, hogy vállaljuk-e, kérjük lépjen kapcsolatba velünk. Szívesen segítünk vagy ajánlünk önnek megfelelő szakembert.</p>
+      <a href="kapcsolat.html" class="btn btn-cta-orange">Kapcsolat<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-left:6px"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
     </div>
   </div>
 </section>

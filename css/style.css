@@ -301,9 +301,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 .hero-bg {
   position: absolute; inset: 0;
-  background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=85');
-  background-size: cover; background-position: center 40%;
-  transform: scale(1.05); transition: transform 8s ease;
+  background: linear-gradient(135deg, #0a1628 0%, #0F172A 60%, #1a2e4a 100%);
+  transform: scale(1); transition: transform 8s ease;
 }
 .hero-bg.loaded { transform: scale(1); }
 .hero-overlay {
