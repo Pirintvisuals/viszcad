@@ -1124,3 +1124,8 @@ input, textarea, select {
 .nav-cta { background: var(--primary) !important; }
 .nav-cta:hover { background: var(--primary-dark) !important; }
 
+
+/* Services home grid responsive */
+@media (max-width:900px) { .svc-grid { grid-template-columns:repeat(2,1fr) !important; } }
+@media (max-width:580px) { .svc-grid { grid-template-columns:1fr !important; } }
+.svc-home-card:hover { transform:translateY(-4px); box-shadow:0 16px 48px rgba(0,0,0,0.13) !important; }
