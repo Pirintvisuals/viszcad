@@ -470,6 +470,27 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script>
+(function() {
+  var btns = document.querySelectorAll('.filter-btn');
+  var cards = document.querySelectorAll('.proj-all-card');
+  btns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      btns.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var filter = btn.getAttribute('data-filter');
+      cards.forEach(function(card) {
+        if (filter === 'all') {
+          card.style.display = '';
+        } else {
+          var cat = card.getAttribute('data-cat') || '';
+          card.style.display = cat === filter ? '' : 'none';
+        }
+      });
+    });
+  });
+})();
+</script>
 
 
 </body>
