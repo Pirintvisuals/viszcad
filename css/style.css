@@ -193,7 +193,6 @@ h1, h2, h3, h4, h5, h6 {
 .nav-logo { display: flex; align-items: center; line-height: 1; }
 .nav-logo img {
   height: 62px; width: auto; display: block;
-  filter: brightness(1.8) contrast(0.9);
 }
 
 .nav-links {
