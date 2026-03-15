@@ -141,7 +141,7 @@
           <span class="proj-cat-badge">Komplett víziközmű</span>
         </div>
         <div class="proj-all-body">
-          <h3>CATONE Kft. – Élelmiszer-raktárcsárnok</h3>
+          <h3>Budörs</h3>
           <p>"CATONE" Kft. új élelmiszer-raktárcsarnoképületének ivóvíz- és tűzivíz-vezeték kiviteli terveinek elkészítése.</p>
         </div>
       </div>
@@ -590,5 +590,27 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script>
+(function() {
+  var btns = document.querySelectorAll('.filter-btn');
+  var cards = document.querySelectorAll('.proj-all-card');
+  btns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      btns.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var filter = btn.dataset.filter;
+      cards.forEach(function(card) {
+        if (filter === 'all') {
+          card.style.display = '';
+        } else {
+          var cats = card.dataset.cat || '';
+          card.style.display = cats.split(' ').indexOf(filter) !== -1 ? '' : 'none';
+        }
+      });
+    });
+  });
+})();
+</script>
+
 </body>
 </html>
