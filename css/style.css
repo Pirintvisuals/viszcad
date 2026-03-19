@@ -182,7 +182,7 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 1000;
   padding: 12px 0;
   border-bottom: none !important;
-  background: linear-gradient(to bottom, rgba(15,23,42,0.72) 0%, rgba(15,23,42,0.15) 100%);
+  background: linear-gradient(to bottom, rgba(15,23,42,0.55) 0%, rgba(15,23,42,0.05) 100%);
   transition: background var(--t-slow), padding var(--t-slow), box-shadow var(--t-slow);
 }
 .nav.scrolled {
@@ -193,7 +193,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-logo { display: flex; align-items: center; line-height: 1; }
 .nav-logo img {
-  height: 62px; width: auto; display: block;
+  height: 90px; width: auto; display: block;
 }
 
 .nav-links {
@@ -307,7 +307,7 @@ h1, h2, h3, h4, h5, h6 {
 .hero-bg.loaded { transform: scale(1); }
 .hero-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(15,23,42,0.92) 0%, rgba(15,23,42,0.75) 50%, rgba(15,23,42,0.60) 100%);
+  background: linear-gradient(135deg, rgba(15,23,42,0.60) 0%, rgba(15,23,42,0.40) 50%, rgba(15,23,42,0.25) 100%);
 }
 .hero-blueprint {
   position: absolute; inset: 0;
