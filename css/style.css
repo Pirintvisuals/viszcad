@@ -182,7 +182,7 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 1000;
   padding: 12px 0;
   border-bottom: none !important;
-  background: linear-gradient(to bottom, rgba(15,23,42,0.55) 0%, rgba(15,23,42,0.05) 100%);
+  background: transparent;
   transition: background var(--t-slow), padding var(--t-slow), box-shadow var(--t-slow);
 }
 .nav.scrolled {
@@ -503,9 +503,14 @@ h1, h2, h3, h4, h5, h6 {
 /* Right panel */
 .about-tabs-right { position: relative; }
 .about-tab-img-wrap {
-  position: relative; width: 100%; height: 420px;
+  position: relative; width: 100%; height: 320px;
   border-radius: var(--r-md); overflow: hidden;
   margin-bottom: var(--sp-4);
+}
+.about-tab-img-wrap::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(15,23,42,0) 40%, rgba(15,23,42,0.45) 100%);
+  pointer-events: none; z-index: 1; border-radius: var(--r-md);
 }
 .about-tab-img {
   position: absolute; inset: 0;
