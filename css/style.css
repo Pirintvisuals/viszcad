@@ -182,6 +182,7 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 1000;
   padding: 12px 0;
   border-bottom: none !important;
+  background: linear-gradient(to bottom, rgba(15,23,42,0.72) 0%, rgba(15,23,42,0.15) 100%);
   transition: background var(--t-slow), padding var(--t-slow), box-shadow var(--t-slow);
 }
 .nav.scrolled {
@@ -885,7 +886,7 @@ h1, h2, h3, h4, h5, h6 {
   .testimonials-grid { grid-template-columns: 1fr; max-width: 560px; margin-left: auto; margin-right: auto; }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .nav-links        { display: none; }
   .nav-hamburger    { display: flex; }
   .section-pad      { padding: var(--sp-8) 0; }
