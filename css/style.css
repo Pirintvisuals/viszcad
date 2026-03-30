@@ -937,6 +937,23 @@ input, textarea, select {
 }
 
 /* Reduce motion accessibility */
+
+/* === MOBILE PERFORMANCE === */
+@media (max-width: 768px) {
+  /* Disable expensive animations on mobile */
+  .hero-bg { transform: none !important; transition: none !important; will-change: auto; }
+  .reveal { transition: none !important; animation: none !important; opacity: 1 !important; transform: none !important; }
+  /* content-visibility for off-screen sections */
+  section:not(:first-of-type) { content-visibility: auto; contain-intrinsic-size: 0 400px; }
+  /* Reduce blur/filter effects */
+  .hero-overlay { backdrop-filter: none; -webkit-backdrop-filter: none; }
+}
+@media (max-width: 480px) {
+  /* Simplify shadows on small screens */
+  .proj-all-card, .svc-home-card, .team-card { box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important; }
+  .proj-all-img-wrap img { transition: none !important; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
