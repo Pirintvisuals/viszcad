@@ -53,7 +53,65 @@
     @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
     .form-submit { width: 100%; height: 52px; font-size: 1rem; margin-top: 0.5rem; }
     .form-notice { font-size: 0.78rem; color: var(--text-light); margin-top: 0.75rem; text-align: center; }
-    .form-success {
+    /* === FORM SUCCESS ANIMATION === */
+  .form-success { background:none; padding:0; border:none; }
+  .fs-inner { display:flex; flex-direction:column; align-items:center; text-align:center; padding:2rem 1rem; }
+  .fs-pipe-wrap { position:relative; margin-bottom:1.5rem; }
+  .fs-svg { width:280px; max-width:100%; }
+
+  /* Pipe draw animation */
+  .fp { stroke-dasharray:300; stroke-dashoffset:300; }
+  .fp1 { animation:drawPipe 0.4s ease forwards 0.1s; }
+  .fp2 { animation:drawPipe 0.3s ease forwards 0.5s; }
+  .fp3 { animation:drawPipe 0.4s ease forwards 0.8s; }
+  .fp4 { animation:drawPipe 0.3s ease forwards 1.2s; }
+  .fp5 { animation:drawPipe 0.3s ease forwards 1.5s; }
+  .fp6 { animation:drawPipe 0.4s ease forwards 1.8s; }
+  .fp7 { animation:drawPipe 0.3s ease forwards 2.2s; }
+  .fp8 { animation:drawPipe 0.4s ease forwards 2.5s; }
+
+  /* Water flow */
+  .fw { opacity:0; animation:flowWater 0.3s ease forwards; stroke-dashoffset:0; }
+  .fw1 { animation:showFlow 0.3s ease forwards 0.5s; }
+  .fw2 { animation:showFlow 0.3s ease forwards 0.9s; }
+  .fw3 { animation:showFlow 0.3s ease forwards 1.2s; }
+  .fw4 { animation:showFlow 0.3s ease forwards 1.6s; }
+  .fw5 { animation:showFlow 0.3s ease forwards 1.9s; }
+  .fw6 { animation:showFlow 0.3s ease forwards 2.3s; }
+  .fw7 { animation:showFlow 0.3s ease forwards 2.6s; }
+  .fw { animation-fill-mode:forwards; }
+
+  /* Water flow moving dashes */
+  .form-success.visible .fw1 { animation:showFlow 0.3s ease forwards 0.5s, flowDash 1s linear 0.5s infinite; }
+  .form-success.visible .fw2 { animation:showFlow 0.3s ease forwards 0.9s, flowDash 1s linear 0.9s infinite; }
+  .form-success.visible .fw3 { animation:showFlow 0.3s ease forwards 1.2s, flowDash 1s linear 1.2s infinite; }
+  .form-success.visible .fw4 { animation:showFlow 0.3s ease forwards 1.6s, flowDash 1s linear 1.6s infinite; }
+  .form-success.visible .fw5 { animation:showFlow 0.3s ease forwards 1.9s, flowDash 1s linear 1.9s infinite; }
+  .form-success.visible .fw6 { animation:showFlow 0.3s ease forwards 2.3s, flowDash 1s linear 2.3s infinite; }
+  .form-success.visible .fw7 { animation:showFlow 0.3s ease forwards 2.6s, flowDash 1s linear 2.6s infinite; }
+
+  /* Checkmark */
+  .fs-check { stroke-dasharray:200; stroke-dashoffset:200; animation:drawPipe 0.5s cubic-bezier(0.22,1,0.36,1) forwards 2.9s; }
+
+  /* Drops */
+  .fs-drops { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; }
+  .fs-drop { position:absolute; width:6px; height:6px; border-radius:50%; background:#0891B2; opacity:0; }
+  .fs-drop:nth-child(1) { top:30%; left:25%; animation:dropFall 0.6s ease forwards 1.4s; }
+  .fs-drop:nth-child(2) { top:20%; left:50%; animation:dropFall 0.6s ease forwards 2.1s; }
+  .fs-drop:nth-child(3) { top:70%; left:75%; animation:dropFall 0.6s ease forwards 2.8s; }
+
+  /* Text */
+  .fs-title { font-family:'Space Grotesk',sans-serif; font-size:2rem; font-weight:700; color:var(--navy); margin:0 0 0.5rem; opacity:0; animation:fadeUp 0.6s ease forwards 3.2s; }
+  .fs-sub { color:var(--text-light); font-size:0.95rem; line-height:1.6; opacity:0; animation:fadeUp 0.6s ease forwards 3.5s; }
+  .fs-badge { display:inline-flex; align-items:center; gap:0.4rem; margin-top:1.25rem; padding:0.4rem 1rem; background:rgba(139,191,64,0.12); border:1px solid rgba(139,191,64,0.35); border-radius:50px; font-size:0.8rem; font-weight:600; color:#5a8a20; opacity:0; animation:fadeUp 0.5s ease forwards 3.8s; }
+
+  @keyframes drawPipe { to { stroke-dashoffset:0; } }
+  @keyframes showFlow { to { opacity:1; } }
+  @keyframes flowDash { to { stroke-dashoffset:-30; } }
+  @keyframes dropFall { 0%{opacity:1;transform:translateY(0) scale(1)} 80%{opacity:0.8;transform:translateY(12px) scale(0.8)} 100%{opacity:0;transform:translateY(20px) scale(0.3)} }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+
+  .form-success {
       display: none; text-align: center; padding: 2rem;
       background: rgba(16,185,129,0.06); border-radius: var(--r-sm);
       border: 1px solid rgba(16,185,129,0.2); color: #065f46;
@@ -157,7 +215,7 @@
           <h2>Írjon nekünk!</h2>
           <p>Töltse ki az alábbi ürlapet és munkatársunk 1 munkanapon belül visszajelentkezik.</p>
 
-          <form id="contactForm" action="https://formsubmit.co/pirint.milan@gmail.com" method="POST">
+          <form id="contactForm" action="https://formsubmit.co/ajax/pirint.milan@gmail.com" method="POST">
             <input type="hidden" name="_subject" value="Kapcsolatfelvétel – ViszCAD Mérnökiroda">
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_template" value="table">
@@ -206,7 +264,50 @@
             <p class="form-notice">Az adatait bizalmasan kezeljük, harmadik félnek nem adjuk ki.</p>
           </form>
           <div class="form-success" id="formSuccess">
-            Köszönjük! Üzenetét megkaptuk és hamarosan visszajelentkezünk.
+            <div class="fs-inner">
+              <div class="fs-pipe-wrap">
+                <svg class="fs-svg" viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Pipe network -->
+                  <path class="fp fp1" d="M0 90 H80" stroke="#8BBF40" stroke-width="10" stroke-linecap="round"/>
+                  <path class="fp fp2" d="M80 90 V40" stroke="#8BBF40" stroke-width="10" stroke-linecap="round"/>
+                  <path class="fp fp3" d="M80 40 H160" stroke="#8BBF40" stroke-width="10" stroke-linecap="round"/>
+                  <path class="fp fp4" d="M160 40 V90" stroke="#8BBF40" stroke-width="10" stroke-linecap="round"/>
+                  <path class="fp fp5" d="M160 90 V140" stroke="#8BBF40" stroke-width="10" stroke-linecap="round"/>
+                  <path class="fp fp6" d="M160 140 H240" stroke="#8BBF40" stroke-width="10" stroke-linecap="round"/>
+                  <path class="fp fp7" d="M240 140 V90" stroke="#8BBF40" stroke-width="10" stroke-linecap="round"/>
+                  <path class="fp fp8" d="M240 90 H320" stroke="#8BBF40" stroke-width="10" stroke-linecap="round"/>
+                  <!-- Water flow overlay -->
+                  <path class="fw fw1" d="M0 90 H80" stroke="#0891B2" stroke-width="4" stroke-linecap="round" stroke-dasharray="12 18"/>
+                  <path class="fw fw2" d="M80 90 V40" stroke="#0891B2" stroke-width="4" stroke-linecap="round" stroke-dasharray="12 18"/>
+                  <path class="fw fw3" d="M80 40 H160" stroke="#0891B2" stroke-width="4" stroke-linecap="round" stroke-dasharray="12 18"/>
+                  <path class="fw fw4" d="M160 40 V140" stroke="#0891B2" stroke-width="4" stroke-linecap="round" stroke-dasharray="12 18"/>
+                  <path class="fw fw5" d="M160 140 H240" stroke="#0891B2" stroke-width="4" stroke-linecap="round" stroke-dasharray="12 18"/>
+                  <path class="fw fw6" d="M240 140 V90" stroke="#0891B2" stroke-width="4" stroke-linecap="round" stroke-dasharray="12 18"/>
+                  <path class="fw fw7" d="M240 90 H320" stroke="#0891B2" stroke-width="4" stroke-linecap="round" stroke-dasharray="12 18"/>
+                  <!-- Checkmark -->
+                  <path class="fs-check" d="M110 95 L148 130 L210 60" stroke="#ffffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <!-- Pipe joints -->
+                  <circle cx="80" cy="90" r="8" fill="#6B9E30"/>
+                  <circle cx="80" cy="40" r="8" fill="#6B9E30"/>
+                  <circle cx="160" cy="40" r="8" fill="#6B9E30"/>
+                  <circle cx="160" cy="90" r="8" fill="#6B9E30"/>
+                  <circle cx="160" cy="140" r="8" fill="#6B9E30"/>
+                  <circle cx="240" cy="140" r="8" fill="#6B9E30"/>
+                  <circle cx="240" cy="90" r="8" fill="#6B9E30"/>
+                </svg>
+                <div class="fs-drops">
+                  <span class="fs-drop"></span>
+                  <span class="fs-drop"></span>
+                  <span class="fs-drop"></span>
+                </div>
+              </div>
+              <h3 class="fs-title">Köszönjük!</h3>
+              <p class="fs-sub">Üzenetét megkaptuk.<br>Hamarosan felvesszük Önnel a kapcsolatot.</p>
+              <div class="fs-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8BBF40" stroke-width="2.5"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                Elküldve
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -392,12 +493,14 @@
       btn.textContent = 'Küldés...';
       btn.disabled = true;
       try {
+        const data = Object.fromEntries(new FormData(form));
         const res = await fetch(form.action, {
           method: 'POST',
-          body: new FormData(form),
-          headers: { Accept: 'application/json' }
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(data)
         });
-        if (res.ok) {
+        const json = await res.json();
+        if (json.success === 'true' || json.success === true || res.ok) {
           form.style.display = 'none';
           success.classList.add('visible');
         } else {
