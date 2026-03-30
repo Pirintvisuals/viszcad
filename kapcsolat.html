@@ -55,10 +55,13 @@
     .form-submit { width: 100%; height: 52px; font-size: 1rem; margin-top: 0.5rem; }
     .form-notice { font-size: 0.78rem; color: var(--text-light); margin-top: 0.75rem; text-align: center; }
     /* === FORM SUCCESS ANIMATION === */
-  .fs-circle { stroke-dasharray:163; stroke-dashoffset:163; animation:fsDraw 0.45s ease-out forwards; }
-  .fs-check  { stroke-dasharray:50;  stroke-dashoffset:50;  animation:fsDraw 0.35s cubic-bezier(0.22,1,0.36,1) forwards 0.4s; }
+  .fs-circle { stroke-dasharray:163; stroke-dashoffset:163; }
+  .fs-check  { stroke-dasharray:50;  stroke-dashoffset:50;  }
+  .fs-msg    { opacity:0; }
+  .form-success.visible .fs-circle { animation:fsDraw 0.45s ease-out forwards; }
+  .form-success.visible .fs-check  { animation:fsDraw 0.35s cubic-bezier(0.22,1,0.36,1) forwards 0.4s; }
+  .form-success.visible .fs-msg    { animation:fsUp 0.35s ease forwards 0.65s; }
   @keyframes fsDraw { to { stroke-dashoffset:0; } }
-  .fs-msg { font-family:'Space Grotesk',sans-serif; font-weight:600; color:var(--navy); font-size:1rem; margin:0; opacity:0; animation:fsUp 0.35s ease forwards 0.65s; }
   @keyframes fsUp { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
   .form-success { display:none; flex-direction:column; align-items:center; gap:1rem; padding:2rem 0; text-align:center; }
   .fs-inner { display:flex; flex-direction:column; align-items:center; text-align:center; padding:2rem 1rem; gap:1rem; }
